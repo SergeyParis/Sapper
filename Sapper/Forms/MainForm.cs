@@ -7,8 +7,9 @@ namespace Sapper.Forms
     public partial class MainForm : Form
     {
         private readonly StarterForm _starterForm;
-        private int GameFieldWidth;
-        private int GameFieldHeight;
+        private int _gameFieldWidth;
+        private int _gameFieldHeight;
+        private int _countOfBombs;
         public MainForm GetRefMainForm => this;
         public StarterForm GetRefStarterForm => _starterForm;
 
@@ -19,10 +20,11 @@ namespace Sapper.Forms
             _starterForm = new StarterForm(this);
         }
 
-        public void SetHeightWidthGameField(int gameFieldWidth, int gameFieldHeight)
+        public void SetPropertiesGameField (int gameFieldWidth, int gameFieldHeight, int countOfBombs)
         {
-            this.GameFieldWidth = gameFieldWidth;
-            this.GameFieldHeight = gameFieldHeight;
+            this._gameFieldWidth = gameFieldWidth;
+            this._gameFieldHeight = gameFieldHeight;
+            this._countOfBombs = countOfBombs;
         }
         private void MainForm_Shown(object sender, EventArgs e)
         {
@@ -32,9 +34,9 @@ namespace Sapper.Forms
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             if (true == this.Visible)
-                this.GameFieldCreate(GameFieldWidth, GameFieldHeight);
+                this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
             else
-                this.GameFieldDelete(GameFieldWidth, GameFieldHeight);
+                this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);
         }
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -83,8 +83,9 @@ namespace Sapper.Forms
             this.Hide();
 
             
-            ((MainForm)SenderForm).SetHeightWidthGameField(Convert.ToInt32(this.fieldWidthTxtBox.Text),
-                                                           Convert.ToInt32(this.fieldHeightTxtBox.Text));
+            ((MainForm)SenderForm).SetPropertiesGameField(Convert.ToInt32(this.fieldWidthTxtBox.Text),
+                                                          Convert.ToInt32(this.fieldHeightTxtBox.Text),
+                                                          Convert.ToInt32(this.countMinesTxtBox.Text));
             SenderForm.Show();
         }
         private void StarterForm_FormClosed(object sender, FormClosedEventArgs e)

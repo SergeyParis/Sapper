@@ -9,26 +9,17 @@ namespace Sapper
 {
     internal sealed class CellOfGameField : System.Windows.Forms.Button
     {
-        private int _surroundingCells;
         public bool IsThisBomb { get; set; }
+        public int SurroundingCells { get; set; }
 
         public CellOfGameField() : this(false) { }
         public CellOfGameField(bool isThisBomb) : base()
         {
             this.IsThisBomb = isThisBomb;
-            this._surroundingCells = 0;
-        }
-
-        public void SetSurroundingCells(params CellOfGameField [] surrondingCells)
-        {
-            CellOfGameField [] surrCells = new CellOfGameField[surrondingCells.Length];
-
-            foreach (CellOfGameField cell in surrCells)
-            {
-                if (true == cell.IsThisBomb)
-                    this._surroundingCells++;
-                else continue;
-            }
+            if (false == this.IsThisBomb)
+                this.SurroundingCells = 0;
+            else
+                this.SurroundingCells = -1;
         }
 
         public static void ClickEvent()
