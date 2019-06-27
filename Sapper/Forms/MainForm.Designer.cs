@@ -28,44 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Field_0_0 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // Field_0_0
-            // 
-            this.Field_0_0.Location = new System.Drawing.Point(25, 80);
-            this.Field_0_0.Name = "Field_0_0";
-            this.Field_0_0.Size = new System.Drawing.Size(25, 25);
-            this.Field_0_0.TabIndex = 0;
-            this.Field_0_0.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(49, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 373);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Field_0_0);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Field_0_0;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button[,] _gameFieldButtons;
+
+        private void GameFieldCreate(int gameFieldWidth, int gameFieldHeight)
+        {
+            _gameFieldButtons = new System.Windows.Forms.Button[gameFieldHeight, gameFieldWidth];
+            for (int i = 0; i < gameFieldHeight; i++)
+                for (int j = 0; j < gameFieldWidth; j++)
+                {
+                    _gameFieldButtons[i, j] = new System.Windows.Forms.Button();
+                    _gameFieldButtons[i, j].Location = new System.Drawing.Point(25 + (i * 24), 80 + (j * 24));
+                    _gameFieldButtons[i, j].Size = new System.Drawing.Size(25, 25);
+
+                    this.Controls.Add(_gameFieldButtons[i, j]);
+                }
+        }
+        private void GameFieldDelete(int gameFieldWidth, int gameFieldHeight)
+        {
+            for (int i = 0; i < GameFieldHeight; i++)
+                for (int j = 0; j < GameFieldWidth; j++)
+                    this.Controls.Remove(_gameFieldButtons[i, j]);
+        }
+
+        //private System.Collections.Generic.List<System.Windows.Forms.Button> _gameFieldButtons = 
+        //    new System.Collections.Generic.List<System.Windows.Forms.Button>();
     }
 }
 

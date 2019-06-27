@@ -18,3 +18,13 @@ D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.exe
 D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.pdb
 D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
 D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\bin\Debug\Sapper.exe.config
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.exe
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\bin\Debug\Sapper.exe
+D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\bin\Debug\Sapper.pdb

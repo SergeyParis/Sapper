@@ -6,6 +6,11 @@ namespace Sapper.Forms
     public partial class MainForm : Form
     {
         private readonly StarterForm _starterForm;
+        private int GameFieldWidth;
+        private int GameFieldHeight;
+        public MainForm GetRefMainForm => this;
+        public StarterForm GetRefStarterForm => _starterForm;
+
         public MainForm()
         {
             InitializeComponent();
@@ -13,12 +18,26 @@ namespace Sapper.Forms
             _starterForm = new StarterForm(this);
         }
 
+        public void SetHeightWidthGameField(int gameFieldWidth, int gameFieldHeight)
+        {
+            this.GameFieldWidth = gameFieldWidth;
+            this.GameFieldHeight = gameFieldHeight;
+        }
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            this.Hide();   
+            this.Hide();
             _starterForm.ShowDialog();
         }
-        public MainForm GetRefMainForm => this;
-        public StarterForm GetRefStarterForm => _starterForm;
+        private void MainForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (true == this.Visible)
+            {
+                this.GameFieldCreate(GameFieldHeight, GameFieldWidth);
+            }
+            else
+            {
+                this.GameFieldDelete(GameFieldHeight, GameFieldWidth);
+            }
+        }
     }
 }
