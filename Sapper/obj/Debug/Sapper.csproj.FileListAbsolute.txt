@@ -1,0 +1,20 @@
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\bin\Debug\Sapper.exe.config
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\bin\Debug\Sapper.exe
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\bin\Debug\Sapper.pdb
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.MainForm.resources
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.exe
+c:\users\зю\documents\visual studio 2015\Projects\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\bin\Debug\Sapper.exe.config
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\bin\Debug\Sapper.exe
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\bin\Debug\Sapper.pdb
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.exe
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
+D:\Store\Sapper\C#\0.01\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
