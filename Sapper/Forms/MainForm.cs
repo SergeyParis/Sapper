@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Sapper.Forms
@@ -31,13 +32,14 @@ namespace Sapper.Forms
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             if (true == this.Visible)
-            {
-                this.GameFieldCreate(GameFieldHeight, GameFieldWidth);
-            }
+                this.GameFieldCreate(GameFieldWidth, GameFieldHeight);
             else
-            {
-                this.GameFieldDelete(GameFieldHeight, GameFieldWidth);
-            }
+                this.GameFieldDelete(GameFieldWidth, GameFieldHeight);
+        }
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _starterForm.Show();
+            this.Hide();
         }
     }
 }

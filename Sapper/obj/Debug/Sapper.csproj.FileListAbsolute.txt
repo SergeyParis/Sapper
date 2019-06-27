@@ -28,3 +28,34 @@ D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.Properties.Resourc
 D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
 D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\bin\Debug\Sapper.exe
 D:\new (Sergey)\Sapper\C#\0.02\Sapper\Sapper\bin\Debug\Sapper.pdb
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\bin\Debug\Sapper.exe.config
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.exe
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\bin\Debug\Sapper.exe
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\bin\Debug\Sapper.pdb
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+D:\new (Sergey)\Sapper\C#\0.21\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\bin\Debug\Sapper.exe.config
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.exe
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\bin\Debug\Sapper.exe
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\bin\Debug\Sapper.pdb
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+D:\dev\projects\C#\Sapper\0.22W\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\bin\Debug\Sapper.exe.config
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.exe
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.pdb
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\bin\Debug\Sapper.exe
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\bin\Debug\Sapper.pdb
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.csprojResolveAssemblyReference.cache
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.Forms.MainForm.resources
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.Forms.StarterForm.resources
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.Cache
+D:\dev\projects\C#\Sapper\work\Sapper\Sapper\obj\Debug\Sapper.CellOfGameField.resources

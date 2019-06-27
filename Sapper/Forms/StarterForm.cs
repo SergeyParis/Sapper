@@ -18,8 +18,8 @@ namespace Sapper.Forms
         private const int DIFFICULTY_BEGGINER_MINES = 10;
         private const int DIFFICULTY_INTERMEDIATE_WIDTH_HEIGHT = 16;
         private const int DIFFICULTY_INTERMEDIATE_MINES = 40;
-        private const int DIFFICULTY_PROFESSIONAL_WIDTH = 16;
-        private const int DIFFICULTY_PROFESSIONAL_HEIGHT = 30;
+        private const int DIFFICULTY_PROFESSIONAL_WIDTH = 30;
+        private const int DIFFICULTY_PROFESSIONAL_HEIGHT = 16;
         private const int DIFFICULTY_PROFESSIONAL_MINES = 99;
 
         public readonly Form SenderForm;
@@ -82,6 +82,7 @@ namespace Sapper.Forms
             this.goBtn.Enabled = false;
             this.Hide();
 
+            
             ((MainForm)SenderForm).SetHeightWidthGameField(Convert.ToInt32(this.fieldWidthTxtBox.Text),
                                                            Convert.ToInt32(this.fieldHeightTxtBox.Text));
             SenderForm.Show();
@@ -89,6 +90,14 @@ namespace Sapper.Forms
         private void StarterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void StarterForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (true == this.Visible)
+            {
+                this.goBtn.Enabled = true;
+            }
         }
     }
 }
