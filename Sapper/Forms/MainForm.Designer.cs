@@ -81,7 +81,7 @@ namespace Sapper.Forms
 
         #endregion
 
-        private const int SIZE_GAME_FIELD = 25;
+        internal const int SIZE_GAME_FIELD = 25;
         private const int FORM_PADDING_UP = 80;
         private const int FORM_PADDING_DOWN = 50;
         private const int FORM_PADDING_SIDE = 25;
@@ -94,6 +94,7 @@ namespace Sapper.Forms
         private void GameFieldCreate (int gameFieldWidth, int gameFieldHeight, int countOfBomb)
         {
             _gameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
+
             for (int i = 0; i < gameFieldWidth; i++)
                 for (int j = 0; j < gameFieldHeight; j++)
                 {
@@ -101,7 +102,6 @@ namespace Sapper.Forms
                     _gameFieldButtons[i, j].Location =
                         new System.Drawing.Point(FORM_PADDING_SIDE + (i * (SIZE_GAME_FIELD - 2)),
                             FORM_PADDING_UP + (j * (SIZE_GAME_FIELD - 2)));
-                    _gameFieldButtons[i, j].Size = new System.Drawing.Size(SIZE_GAME_FIELD, SIZE_GAME_FIELD);
 
                     this.Controls.Add(_gameFieldButtons[i, j]);
                 }
@@ -158,7 +158,7 @@ namespace Sapper.Forms
                                     counter++;
                                 }
                             }
-                            catch{ }
+                            catch { }
                         }
 
                     _gameFieldButtons[i, j].SetSurroundingCells = tempCells;
