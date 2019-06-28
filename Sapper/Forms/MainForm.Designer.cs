@@ -1,4 +1,6 @@
-﻿namespace Sapper.Forms
+﻿using System.Collections.Generic;
+
+namespace Sapper.Forms
 {
     partial class MainForm
     {
@@ -113,7 +115,7 @@
                         FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
 
 
-            
+
 
             for (int k = 0; k < countOfBomb; k++)
             {
@@ -121,8 +123,8 @@
 
                 while (true)
                 {
-                    int tempHeight = tempRandom.Next(gameFieldHeight - 1);
-                    int tempWidth = tempRandom.Next(gameFieldWidth - 1);
+                    int tempHeight = tempRandom.Next(gameFieldHeight );
+                    int tempWidth = tempRandom.Next(gameFieldWidth);
 
                     if (false == _gameFieldButtons[tempHeight, tempWidth].IsThisBomb)
                     {
@@ -133,21 +135,36 @@
                 }
             }
 
-
             for (int i = 0; i < gameFieldWidth; i++)
-                for (int j = 0; j < gameFieldHeight; j++)               // every cell
-                    if (false == _gameFieldButtons[i, j].IsThisBomb)    // if bomb this cell
-                        for (int k = -1; k < 2; k++)                    //every surrounding cell
-                            for (int l = -1; l < 2; l++)
+                for (int j = 0; j < gameFieldHeight; j++)
+                {
+                    int counter = 0;
+                    int surroundingCellount = 0;
+
+                    CellOfGameField[] tempCells = new CellOfGameField[8];
+
+                    for (int k = -1; k < 2; k++)
+                        for (int l = -1; l < 2; l++)
+                        {
+                            try
                             {
-                                try
+                                if ((0 == k) && (0 == l)) { continue; }
+                                else
                                 {
-                                    if ((null != _gameFieldButtons[i - k, j - l])
-                                      && (true == _gameFieldButtons[i - k, j - l].IsThisBomb))
-                                        _gameFieldButtons[i, j].SurroundingCells++;
+                                    tempCells[counter] = _gameFieldButtons[i - k, j - l];
+                                    if (tempCells[counter].IsThisBomb)
+                                        surroundingCellount++;
+
+                                    counter++;
                                 }
-                                catch { }
                             }
+                            catch{ }
+                        }
+
+                    _gameFieldButtons[i, j].SetSurroundingCells = tempCells;
+                    _gameFieldButtons[i, j].SurroundingCellsWithBomb = surroundingCellount;
+                }
+
         }
 
         private void GameFieldDelete (int gameFieldWidth, int gameFieldHeight)
