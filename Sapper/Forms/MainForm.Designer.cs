@@ -123,12 +123,12 @@ namespace Sapper.Forms
 
                 while (true)
                 {
-                    int tempHeight = tempRandom.Next(gameFieldHeight );
                     int tempWidth = tempRandom.Next(gameFieldWidth);
+                    int tempHeight = tempRandom.Next(gameFieldHeight);
 
-                    if (false == _gameFieldButtons[tempHeight, tempWidth].IsThisBomb)
+                    if (false == _gameFieldButtons[tempWidth, tempHeight].IsThisBomb)
                     {
-                        _gameFieldButtons[tempHeight, tempWidth].IsThisBomb = true;
+                        _gameFieldButtons[tempWidth, tempHeight].IsThisBomb = true;
                         break;
                     }
                     else continue;
