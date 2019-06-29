@@ -64,6 +64,7 @@ namespace Sapper.Forms
 
             _timerThisGame.Stop();
             _gameField.OpenBomb();
+            _gameField.Lock();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -89,6 +90,7 @@ namespace Sapper.Forms
         private void OnClickResetButton(object sender, EventArgs e)
         {
             this._gameStop = false;
+            this._gameField.Unlock();
             this.GameFieldRebuild();
 
             this._timerThisGame.Reset();

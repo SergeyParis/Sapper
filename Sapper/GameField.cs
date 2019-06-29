@@ -61,14 +61,14 @@ namespace Sapper
         }
         public void Lock()
         {
-            foreach (CellOfGameField field in _gameField)
+            foreach (var field in _gameField)
                 field.EnabledClick = false;
         }
 
         public void Unlock()
         {
             foreach (CellOfGameField field in _gameField)
-                field.Enabled = true;
+                field.EnabledClick = true;
         }
         public void Open()
         {

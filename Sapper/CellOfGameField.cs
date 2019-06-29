@@ -9,7 +9,7 @@ namespace Sapper
         private bool _isFlag;
         private GameField _senderGameField;
 
-        internal bool EnabledClick;
+        internal bool EnabledClick = true;
         internal bool IsPressed;
         internal bool IsBomb;
         internal int CountSurroundingCellsWithBomb;
@@ -71,10 +71,10 @@ namespace Sapper
 
         private void OnClick(object sender, EventArgs e)
         {
-            if (false == _senderGameField.GetSenderForm.ThisGameLose)
+            if (false == _senderGameField.GetSenderForm.ThisGameStop)
                 _senderGameField.GetSenderForm.TimerStart();
 
-            if (false == this.IsPressed && false == this.IsFlag)
+            if (false == this.IsPressed && true == this.EnabledClick && false == this.IsFlag)
             {
                 this.IsPressed = true;
                 this.EnabledClick = false;
@@ -83,7 +83,7 @@ namespace Sapper
 
                 if (true == this.IsBomb)
                 {
-                    if (false == _senderGameField.GetSenderForm.ThisGameLose)
+                    if (false == _senderGameField.GetSenderForm.ThisGameStop)
                     {
                         this.Image = Properties.Textures.Win7.win7_bombLose;
                         _senderGameField.GetSenderForm.GameLose();
