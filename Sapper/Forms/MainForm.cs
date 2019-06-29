@@ -39,6 +39,21 @@ namespace Sapper.Forms
             _chanceOfExplosionBombs = chance;
         }
 
+        public void GetFocus()
+        {
+            this.label1.Focus();
+        }
+
+
+        public void ChangeSize()
+        {
+            if (GetGameFieldWidth > 0 && GetGameFieldHeight > 0)
+                this.Size =
+                    new System.Drawing.Size(
+                        _gameField.SizeX + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
+                        _gameField.SizeY + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
+        }
+        
         public void TimerStart()
         {
             this._timerThisGame.Start();
@@ -98,25 +113,15 @@ namespace Sapper.Forms
         {
             this._gameStop = false;
             this._gameField.Unlock();
+
             this.GameFieldRebuild();
 
             this._timerThisGame.Reset();
             this._countBombsRemains.SetCountBombs(_getCountOfBombs);
 
             this._resetButton.Image = Properties.Textures.Win7.win7_resetGame;
-        }
-        public void ChangeSize()
-        {
-            if (GetGameFieldWidth > 0 && GetGameFieldHeight > 0)
-                this.Size =
-                    new System.Drawing.Size(
-                        _gameField.SizeX + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
-                        _gameField.SizeY + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
-        }
 
-        public void GetFocus()
-        {
-            this.label1.Focus();
+            this.GetFocus();
         }
     }
 }

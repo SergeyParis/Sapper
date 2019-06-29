@@ -47,14 +47,11 @@ namespace Sapper.Controls
             if (value < 0)
             {
                 ValueLessNull();
-
                 return;
             }
-
             Value1 = value % 10;
             Value10 = (value % 100) / 10;
             Value100 = value / 100;
-
         }
 
         protected void SetValueCounter(int currentValue)

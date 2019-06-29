@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Sapper
 {
     class GameField
     {
         private readonly CellOfGameField[,] _gameField;
-
-        internal System.Collections.Generic.List<CellOfGameField> NoBombsCells =
-            new System.Collections.Generic.List<CellOfGameField>();
-
+        
         internal int CountNoBombsCells;
 
         private readonly int _height;
@@ -86,6 +82,8 @@ namespace Sapper
         {
             foreach (var field in _gameField)
                 field.ClearField();
+
+            CountNoBombsCells = 0;
         }
         
         private void SetSenderGameFieldForFields()
@@ -178,6 +176,8 @@ namespace Sapper
         }
         private void SetNoBombSells()
         {
+            CountNoBombsCells = 0;
+
             foreach (var field in _gameField)
                 if (false == field.IsBomb)
                     this.CountNoBombsCells++;
