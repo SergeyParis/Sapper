@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace Sapper.Forms
 {
     partial class MainForm
@@ -81,97 +80,30 @@ namespace Sapper.Forms
 
         #endregion
 
-        internal const int SIZE_GAME_FIELD = 25;
-        private const int FORM_PADDING_UP = 80;
-        private const int FORM_PADDING_DOWN = 50;
-        private const int FORM_PADDING_SIDE = 25;
+        internal const int SIZE_GAME_FIELD = 18;
+        internal const int FORM_PADDING_UP = 80;
+        internal const int FORM_PADDING_DOWN = 50;
+        internal const int FORM_PADDING_SIDE = 25;
 
-        private const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
-        private const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
+        internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
+        internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
 
-        private CellOfGameField[,] _gameFieldButtons;
+        internal CellOfGameField[,] GameFieldButtons;
 
-        private void GameFieldCreate (int gameFieldWidth, int gameFieldHeight, int countOfBomb)
+        public void GameFieldCreate (int gameFieldWidth, int gameFieldHeight, int countOfBomb)
         {
-            _gameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
+            GameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
 
-            for (int i = 0; i < gameFieldWidth; i++)
-                for (int j = 0; j < gameFieldHeight; j++)
-                {
-                    _gameFieldButtons[i, j] = new CellOfGameField();
-                    _gameFieldButtons[i, j].Location =
-                        new System.Drawing.Point(FORM_PADDING_SIDE + (i * (SIZE_GAME_FIELD - 2)),
-                            FORM_PADDING_UP + (j * (SIZE_GAME_FIELD - 2)));
-
-                    this.Controls.Add(_gameFieldButtons[i, j]);
-                }
-
-            if (gameFieldWidth > 0 && gameFieldHeight > 0)
-                this.Size =
-                    new System.Drawing.Size(
-                        (_gameFieldButtons[gameFieldWidth - 1, gameFieldHeight - 1].Location.X) +
-                        FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
-                        (_gameFieldButtons[gameFieldWidth - 1, gameFieldHeight - 1].Location.Y) +
-                        FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
-
-
-
-
-            for (int k = 0; k < countOfBomb; k++)
-            {
-                System.Random tempRandom = new System.Random();
-
-                while (true)
-                {
-                    int tempWidth = tempRandom.Next(gameFieldWidth);
-                    int tempHeight = tempRandom.Next(gameFieldHeight);
-
-                    if (false == _gameFieldButtons[tempWidth, tempHeight].IsThisBomb)
-                    {
-                        _gameFieldButtons[tempWidth, tempHeight].IsThisBomb = true;
-                        break;
-                    }
-                    else continue;
-                }
-            }
-
-            for (int i = 0; i < gameFieldWidth; i++)
-                for (int j = 0; j < gameFieldHeight; j++)
-                {
-                    int counter = 0;
-                    int surroundingCellount = 0;
-
-                    CellOfGameField[] tempCells = new CellOfGameField[8];
-
-                    for (int k = -1; k < 2; k++)
-                        for (int l = -1; l < 2; l++)
-                        {
-                            try
-                            {
-                                if ((0 == k) && (0 == l)) { continue; }
-                                else
-                                {
-                                    tempCells[counter] = _gameFieldButtons[i - k, j - l];
-                                    if (tempCells[counter].IsThisBomb)
-                                        surroundingCellount++;
-
-                                    counter++;
-                                }
-                            }
-                            catch { }
-                        }
-
-                    _gameFieldButtons[i, j].SetSurroundingCells = tempCells;
-                    _gameFieldButtons[i, j].SurroundingCellsWithBomb = surroundingCellount;
-                }
-
+            Sapper.CellOfGameField.PlacingBombsOnBoard(gameFieldWidth, gameFieldHeight, this);
+            Sapper.CellOfGameField.ChangeSizeGameField(gameFieldWidth, gameFieldHeight, this);
+            Sapper.CellOfGameField.SetCountSurroundingCellsAll(gameFieldWidth, gameFieldHeight, this);
         }
 
         private void GameFieldDelete (int gameFieldWidth, int gameFieldHeight)
         {
             for (int i = 0; i < _gameFieldWidth; i++)
                 for (int j = 0; j < _gameFieldHeight; j++)
-                    this.Controls.Remove(_gameFieldButtons[i, j]);
+                    this.Controls.Remove(GameFieldButtons[i, j]);
         }
 
         private System.Windows.Forms.MenuStrip MenuStripMain;

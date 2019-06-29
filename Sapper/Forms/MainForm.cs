@@ -10,8 +10,6 @@ namespace Sapper.Forms
         private int _gameFieldWidth;
         private int _gameFieldHeight;
         private int _countOfBombs;
-        public MainForm GetRefMainForm => this;
-        public StarterForm GetRefStarterForm => _starterForm;
 
         public MainForm()
         {
@@ -19,7 +17,7 @@ namespace Sapper.Forms
 
             _starterForm = new StarterForm(this);
         }
-
+        
         public void SetPropertiesGameField (int gameFieldWidth, int gameFieldHeight, int countOfBombs)
         {
             this._gameFieldWidth = gameFieldWidth;
