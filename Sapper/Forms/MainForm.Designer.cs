@@ -37,6 +37,7 @@
             // 
             // MenuStripMain
             // 
+            this.MenuStripMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(168)))), ((int)(((byte)(228)))));
             this.MenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GameMenuStrip});
             this.MenuStripMain.Location = new System.Drawing.Point(0, 0);
@@ -56,7 +57,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -74,12 +75,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(185)))), ((int)(((byte)(234)))));
             this.ClientSize = new System.Drawing.Size(431, 373);
             this.Controls.Add(this.MenuStripMain);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
-            this.Text = "MainForm";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.MenuStripMain.ResumeLayout(false);
@@ -88,6 +89,11 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.MenuStrip MenuStripMain;
+        private System.Windows.Forms.ToolStripMenuItem GameMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
 
         #endregion
     }

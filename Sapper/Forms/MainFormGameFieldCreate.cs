@@ -68,9 +68,6 @@
             _gameField.Rebuild();
         }
 
-        private System.Windows.Forms.MenuStrip MenuStripMain;
-        private System.Windows.Forms.ToolStripMenuItem GameMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        
     }
 }
