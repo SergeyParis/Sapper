@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Sapper
 {
     internal sealed class CellOfGameField : System.Windows.Forms.Button
     {
+        private static Form _senderForm;
         public System.Collections.Generic.List<CellOfGameField> SurroundingCells = new List<CellOfGameField>();
-        // private static bool gameStart = false;
         private bool _isPressed;
         private bool _isFlag;
+        
         public int CountSurroundingCellsWithBomb { get; set; }
         public bool IsBomb { get; set; }
         private bool IsFlag
@@ -25,7 +27,7 @@ namespace Sapper
                     this._isFlag = value;
             }
         }
-
+        
         public CellOfGameField() : this(false) { }
         public CellOfGameField(bool isBomb) : base()
         {
@@ -47,9 +49,13 @@ namespace Sapper
             this.MouseDown += new MouseEventHandler(OnMouseDown);
         }
 
-        public static void SetCountSurroundingCellsAll(Form sender)
+        public static void SetSenderForm(Form senderForm)
         {
-            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+            _senderForm = senderForm;
+        }
+        public static void SetCountSurroundingCellsAll()
+        {
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
             if (null != senderForm)
                 for (int i = 0; i < senderForm.GameFieldWidth; i++)
@@ -75,9 +81,9 @@ namespace Sapper
 
                     }
         }
-        public static void ChangeSizeGameField(Form sender)
+        public static void ChangeSizeGameField()
         {
-            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
             if (null != senderForm)
                 if (senderForm.GameFieldWidth > 0 && senderForm.GameFieldHeight > 0)
@@ -88,9 +94,9 @@ namespace Sapper
                             (senderForm.GameFieldButtons[senderForm.GameFieldWidth - 1, senderForm.GameFieldHeight - 1].Location.Y) +
                             Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
         }
-        public static void CreategameFieldButtons(Form sender)
+        public static void CreategameFieldButtons()
         {
-            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
             if (null != senderForm)
                 for (int i = 0; i < senderForm.GameFieldWidth; i++)
@@ -105,9 +111,9 @@ namespace Sapper
                         senderForm.Controls.Add(senderForm.GameFieldButtons[i, j]);
                     }
         }
-        public static void PlacingBombsOnBoard(Form sender)
+        public static void PlacingBombsOnBoard()
         {
-            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
             if (null != senderForm)
             {
@@ -125,7 +131,8 @@ namespace Sapper
 
         private void OnClick(object sender, EventArgs e)
         {
-            // gameStart = true;
+            ((Sapper.Forms.MainForm)_senderForm).GameContinius = true;
+            ((Sapper.Forms.MainForm)_senderForm).TimerStart();
 
             if (false == this._isPressed && false == this.IsFlag)
             {
@@ -221,6 +228,9 @@ namespace Sapper
 
         public static void OpenAllGameField(Form sender)
         {
+            ((Sapper.Forms.MainForm) _senderForm).GameContinius = false;
+            ((Sapper.Forms.MainForm)_senderForm).TimerStop();
+
             Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
 
             if (null != senderForm)

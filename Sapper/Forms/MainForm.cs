@@ -10,10 +10,11 @@ namespace Sapper.Forms
         private int _gameFieldWidth;
         private int _gameFieldHeight;
         private int _countOfBombs;
+
         public int GameFieldWidth => _gameFieldWidth;
         public int GameFieldHeight => _gameFieldHeight;
         public int CountOfBombs => _countOfBombs;
-
+        public bool GameContinius { get; set; }
 
         public MainForm ()
         {
@@ -48,10 +49,22 @@ namespace Sapper.Forms
 
         private void OnClickResetButton(object sender, EventArgs e)
         {
+            this.GameContinius = false;
+
             this.Hide();
             this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);      
             this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
             this.Show();    
+        }
+
+        public void TimerStart()
+        {
+            this._timerThisGame.Start();
+        }
+
+        public void TimerStop()
+        {
+            this._timerThisGame.Stop();
         }
     }
 }
