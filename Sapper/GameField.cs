@@ -74,6 +74,12 @@ namespace Sapper
                 if (false == field.IsPressed)
                     field.PerformClick();
         }
+        public void OpenBomb()
+        {
+            foreach (var field in _gameField)
+                if (true == field.IsBomb && false == field.IsPressed)
+                    field.PerformClick();
+        }
         public void Clear()
         {
             foreach (var field in _gameField)

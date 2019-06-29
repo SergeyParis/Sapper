@@ -57,7 +57,7 @@ namespace Sapper.Forms
         public void GameLose()
         {
             _timerThisGame.Stop();
-            _gameField.Open();
+            _gameField.OpenBomb();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
