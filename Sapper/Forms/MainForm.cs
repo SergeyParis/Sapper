@@ -21,8 +21,6 @@ namespace Sapper.Forms
             InitializeComponent();
 
             _starterForm = new StarterForm(this);
-
-            this._countBombsRemains?.SetCountBombs(_countOfBombs);
         }
 
         public void SetPropertiesGameField(int gameFieldWidth, int gameFieldHeight, int countOfBombs)
@@ -39,9 +37,12 @@ namespace Sapper.Forms
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             if (true == this.Visible)
-                this.GameFieldCreate(_gameFieldWidth, GameFieldHeight, CountOfBombs);
+            {
+                this.GameFieldCreate();
+                this._countBombsRemains.SetCountBombs(_countOfBombs);
+            }
             else
-                this.GameFieldDelete(_gameFieldWidth, GameFieldHeight);
+                this.GameFieldDelete();
         }
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -52,11 +53,7 @@ namespace Sapper.Forms
         private void OnClickResetButton(object sender, EventArgs e)
         {
             this.GameContinius = false;
-
-            this.Hide();
-            this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);
-            this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
-            this.Show();
+            this.GameFieldRebuild();
         }
 
         public void TimerStart()

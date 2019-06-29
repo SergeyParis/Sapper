@@ -26,5 +26,11 @@ namespace Sapper.Controls
             this._bombs = bombs;
             base.SetValueCounter(_bombs);
         }
+
+        public void Reset()
+        {
+            _bombs = 0;
+            base.SetValueCounter(_bombs);
+        }
     }
 }

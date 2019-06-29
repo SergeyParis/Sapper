@@ -53,7 +53,7 @@ namespace Sapper
         {
             _senderForm = senderForm;
         }
-        public static void SetCountSurroundingCellsAll()
+        private static void SetRefSurroundingCells()
         {
             Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
@@ -71,7 +71,29 @@ namespace Sapper
                                 {
                                     senderForm.GameFieldButtons[i, j].
                                         SurroundingCells.Add(senderForm.GameFieldButtons[i - k, j - l]);
+                                }
+                                catch { continue; }
+                            }
 
+
+                    }
+        }
+        private static void SetCountSurroundingCellsWithBomb()
+        {
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
+
+            if (null != senderForm)
+                for (int i = 0; i < senderForm.GameFieldWidth; i++)
+                    for (int j = 0; j < senderForm.GameFieldHeight; j++)
+                    {
+
+                        for (int k = -1; k < 2; k++)
+                            for (int l = -1; l < 2; l++)
+                            {
+                                if ((0 == k) && (0 == l)) { continue; }
+
+                                try
+                                {
                                     if (senderForm.GameFieldButtons[i - k, j - l].IsBomb)
                                         senderForm.GameFieldButtons[i, j].CountSurroundingCellsWithBomb++;
                                 }
@@ -81,7 +103,7 @@ namespace Sapper
 
                     }
         }
-        public static void ChangeSizeGameField()
+        private static void ChangeSizeGameField()
         {
             Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
@@ -94,7 +116,7 @@ namespace Sapper
                             (senderForm.GameFieldButtons[senderForm.GameFieldWidth - 1, senderForm.GameFieldHeight - 1].Location.Y) +
                             Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
         }
-        public static void CreategameFieldButtons()
+        private static void CreategameFieldButtons()
         {
             Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
@@ -111,7 +133,7 @@ namespace Sapper
                         senderForm.Controls.Add(senderForm.GameFieldButtons[i, j]);
                     }
         }
-        public static void PlacingBombsOnBoard()
+        private static void PlacingBombsOnBoard()
         {
             Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
@@ -127,6 +149,20 @@ namespace Sapper
                     .IsBomb = true;
                 }
             }
+        }
+        public static void BuildGameField()
+        {
+            CreategameFieldButtons();
+            ChangeSizeGameField();
+            PlacingBombsOnBoard();
+            SetRefSurroundingCells();
+            SetCountSurroundingCellsWithBomb();
+        }
+
+        public static void RebuildGameField()
+        {
+            PlacingBombsOnBoard();
+            SetCountSurroundingCellsWithBomb();
         }
 
         private void OnClick(object sender, EventArgs e)
@@ -207,12 +243,12 @@ namespace Sapper
                     if (true == this.IsFlag && false == this._isPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_flag;
-                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsIncrease(1);
+                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsDecrease(1);
                     }
                     else if (false == this._isPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_close;
-                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsDecrease(1);
+                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsIncrease(1);
                     }
                 }
                 else
@@ -234,18 +270,31 @@ namespace Sapper
                 }
             }
         }
-
-        public static void OpenAllGameField(Form sender)
+        private void ClearField()
         {
-            ((Sapper.Forms.MainForm)_senderForm).GameContinius = false;
-            ((Sapper.Forms.MainForm)_senderForm).TimerStop();
+            this._isPressed = false;
+            this._isFlag = false;
+            this.CountSurroundingCellsWithBomb = 0;
 
-            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+            this.Image = Properties.Textures.Win7.win7_close;
+        }
+
+        public static void OpenAllGameField()
+        {
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
 
             if (null != senderForm)
                 foreach (var field in senderForm.GameFieldButtons)
                     if (false == field._isPressed)
                         field.PerformClick();
+        }
+        public static void CloseAllGameField()
+        {
+            Sapper.Forms.MainForm senderForm = _senderForm as Sapper.Forms.MainForm;
+
+            if (null != senderForm)
+                foreach (var field in senderForm.GameFieldButtons)
+                    field.ClearField();
         }
     }
 }

@@ -30,6 +30,13 @@ namespace Sapper.Controls
             Timer.Stop();
         }
 
+        public void Reset()
+        {
+            Timer.Stop();
+            _time = 0;
+            base.SetValueCounter(_time);
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             base.SetValueCounter(_time);
