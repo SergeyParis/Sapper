@@ -101,8 +101,8 @@ namespace Sapper
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
                 {
                     _gameField[i, j] = new CellOfGameField
                     {
@@ -120,10 +120,10 @@ namespace Sapper
 
             Random random = new Random();
 
-            for (int i = 0; i < _senderForm.CountOfBombs; i++)
+            for (int i = 0; i < _senderForm.GetCountOfBombs; i++)
             {
-                int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
-                int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
+                int tempRandomWidth = random.Next(_senderForm.GetGameFieldWidth);
+                int tempRandomHeight = random.Next(_senderForm.GetGameFieldHeight);
 
                 if (false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
                     _gameField[tempRandomWidth, tempRandomHeight].IsBomb = true;
@@ -135,8 +135,8 @@ namespace Sapper
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
                 {
                     for (int k = -1; k < 2; k++)
                         for (int l = -1; l < 2; l++)
@@ -156,8 +156,8 @@ namespace Sapper
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
                 {
 
                     for (int k = -1; k < 2; k++)

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Sapper
 {
-    internal sealed class CellOfGameField : System.Windows.Forms.Button
+    internal sealed class CellOfGameField : Button
     {
         private bool _isFlag;
         private GameField _senderGameField;
@@ -15,7 +15,7 @@ namespace Sapper
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
-        
+
         private bool IsFlag
         {
             get
@@ -78,76 +78,91 @@ namespace Sapper
             {
                 this.IsPressed = true;
                 this.EnabledClick = false;
-                
+
                 --_senderGameField.CountNoBombsCells;
 
                 if (true == this.IsBomb)
-                {
-                    if (false == _senderGameField.GetSenderForm.ThisGameStop)
-                    {
-                        this.Image = Properties.Textures.Win7.win7_bombLose;
-                        _senderGameField.GetSenderForm.GameLose();
-                    }
-                    else
-                        this.Image = Properties.Textures.Win7.win7_bomb;
-                }
+                    ClickBomb();
                 else if (0 == this.CountSurroundingCellsWithBomb)
-                {
-                    this.Image = Properties.Textures.Win7.win7_0;
-
-                    for (int i = 0; i < this.SurroundingCells.Count; i++)
-                    {
-                        if (null == SurroundingCells.ToArray()[i])
-                            break;
-                        SurroundingCells.ToArray()[i].PerformClick();
-                    }
-                }
+                    ClickNullCell();
                 else
-                {
-                    try
-                    {
-                        switch (this.CountSurroundingCellsWithBomb)
-                        {
-                            case 1:
-                                this.Image = Properties.Textures.Win7.win7_1;
-                                break;
-                            case 2:
-                                this.Image = Properties.Textures.Win7.win7_2;
-                                break;
-                            case 3:
-                                this.Image = Properties.Textures.Win7.win7_3;
-                                break;
-                            case 4:
-                                this.Image = Properties.Textures.Win7.win7_4;
-                                break;
-                            case 5:
-                                this.Image = Properties.Textures.Win7.win7_5;
-                                break;
-                            case 6:
-                                this.Image = Properties.Textures.Win7.win7_6;
-                                break;
-                            case 7:
-                                this.Image = Properties.Textures.Win7.win7_7;
-                                break;
-                            case 8:
-                                this.Image = Properties.Textures.Win7.win7_8;
-                                break;
-
-                            default:
-                                throw new ArgumentException("ERROR_TEXTURES_LOAD");
-                        }
-                    }
-                    catch (ArgumentException exeption)
-                    {
-                        MessageBox.Show(exeption.Message);
-                    }
-
-                }
+                    ClickNotNullCell();
             }
             if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.CountNoBombsCells))
                 _senderGameField.GetSenderForm.GameWin();
 
             _senderGameField.GetSenderForm.GetFocus();
+        }
+
+        private void ClickBomb()
+        {
+            int chanceOfExplosionBomb = _senderGameField.GetSenderForm.GetChanceOfExplosionBombs;
+            Random random = new Random();
+
+            int currentChance = random.Next(100); // maximal chace - 100%
+
+            if (currentChance < chanceOfExplosionBomb &&
+                false == _senderGameField.GetSenderForm.ThisGameStop)
+            {
+                this.Image = Properties.Textures.Win7.win7_bombLose;
+                _senderGameField.GetSenderForm.GameLose();
+            }
+            else
+            {
+                this.Image = Properties.Textures.Win7.win7_bomb;
+                this.IsFlag = true;
+            }
+        }
+        private void ClickNullCell()
+        {
+            this.Image = Properties.Textures.Win7.win7_0;
+
+            for (int i = 0; i < this.SurroundingCells.Count; i++)
+            {
+                if (null == SurroundingCells.ToArray()[i])
+                    break;
+                SurroundingCells.ToArray()[i].PerformClick();
+            }
+        }
+        private void ClickNotNullCell()
+        {
+            try
+            {
+                switch (this.CountSurroundingCellsWithBomb)
+                {
+                    case 1:
+                        this.Image = Properties.Textures.Win7.win7_1;
+                        break;
+                    case 2:
+                        this.Image = Properties.Textures.Win7.win7_2;
+                        break;
+                    case 3:
+                        this.Image = Properties.Textures.Win7.win7_3;
+                        break;
+                    case 4:
+                        this.Image = Properties.Textures.Win7.win7_4;
+                        break;
+                    case 5:
+                        this.Image = Properties.Textures.Win7.win7_5;
+                        break;
+                    case 6:
+                        this.Image = Properties.Textures.Win7.win7_6;
+                        break;
+                    case 7:
+                        this.Image = Properties.Textures.Win7.win7_7;
+                        break;
+                    case 8:
+                        this.Image = Properties.Textures.Win7.win7_8;
+                        break;
+
+                    default:
+                        throw new ArgumentException("ERROR_TEXTURES_LOAD");
+                }
+            }
+            catch (ArgumentException exeption)
+            {
+                MessageBox.Show(exeption.Message);
+            }
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {

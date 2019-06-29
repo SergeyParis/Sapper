@@ -81,11 +81,12 @@ namespace Sapper.Forms
         {
             this.goBtn.Enabled = false;
             this.Hide();
-
             
             ((MainForm)SenderForm).SetPropertiesGameField(Convert.ToInt32(this.fieldWidthTxtBox.Text),
                                                           Convert.ToInt32(this.fieldHeightTxtBox.Text),
                                                           Convert.ToInt32(this.countMinesTxtBox.Text));
+            ((MainForm)SenderForm).SetChanceOfExplosionBombs(_chanceOfExplosionBombs);
+
             SenderForm.Show();
         }
         private void StarterForm_FormClosed(object sender, FormClosedEventArgs e)
