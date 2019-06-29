@@ -84,6 +84,9 @@ namespace Sapper.Forms
         private void OnClickResetButton(object sender, EventArgs e)
         {
             this.GameFieldRebuild();
+
+            this._timerThisGame.Reset();
+            this._countBombsRemains.SetCountBombs(_countOfBombs);
         }
     }
 }

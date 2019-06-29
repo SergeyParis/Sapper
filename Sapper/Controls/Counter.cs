@@ -29,16 +29,29 @@ namespace Sapper
         private void SetValue(int value)
         {
             if (value > 1000)
+            {
+                MessageBox.Show("ERROR_ARGUMENT_VALUE_EXEPTION");
                 return;
+            }
+            if (-1 == value)
+            {
+                value_1 = -1;
+                value_10 = -1;
+                value_100 = -1;
+
+                return;
+            }
 
             value_1 = value % 10;
-            value_10 = value % 100;
-            value_100 = value % 1000;
+            value_10 = (value % 100) / 10;
+            value_100 = value / 100;
+
         }
 
         protected void SetValueCounter(int currentValue)
         {
-            value_1 = currentValue;
+            SetValue(currentValue);
+
             OutConterValue();
             ClearData();
         }
@@ -57,6 +70,8 @@ namespace Sapper
 
             switch (value_1)
             {
+                case -1: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_null; break;
+
                 case 0: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_0; break;
                 case 1: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_1; break;
                 case 2: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_2; break;
@@ -70,6 +85,8 @@ namespace Sapper
             }
             switch (value_10)
             {
+                case -1: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_null; break;
+
                 case 0: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_0; break;
                 case 1: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_1; break;
                 case 2: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_2; break;
@@ -83,6 +100,8 @@ namespace Sapper
             }
             switch (value_100)
             {
+                case -1: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_null; break;
+
                 case 0: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_0; break;
                 case 1: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_1; break;
                 case 2: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_2; break;

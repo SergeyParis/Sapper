@@ -33,7 +33,7 @@ namespace Sapper.Controls
         public void Reset()
         {
             Timer.Stop();
-            _time = 0;
+            _time = -1;
             base.SetValueCounter(_time);
         }
 
