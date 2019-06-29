@@ -20,11 +20,15 @@ namespace Sapper
             _height = height;
             _senderForm = sender;
 
+            CellOfGameField.SetSenderForm(sender);
             _gameField = new CellOfGameField[_width, _height];
         }
 
-        public CellOfGameField this[int indexX, int indexY] => _gameField[indexX, indexY];
-
+        public CellOfGameField this[int indexX, int indexY]
+        {
+            get { return _gameField[indexX, indexY]; }
+            set { _gameField[indexX, indexY] = value; }
+        }
         public void Build()
         {
             CreateButtons();
@@ -63,7 +67,7 @@ namespace Sapper
             foreach (var field in _gameField)
                 field.ClearField();
         }
-        
+
         private void CreateButtons()
         {
             if (null == _senderForm) return;
@@ -151,11 +155,9 @@ namespace Sapper
         }
         private void SetNoBombSells()
         {
-            if (null == _senderForm) return;
-
             foreach (var field in _gameField)
                 if (false == field.IsBomb)
-                    field.NoBombsCells.Add(field);
+                    CellOfGameField.NoBombsCells.Add(field);
         }
     }
 }

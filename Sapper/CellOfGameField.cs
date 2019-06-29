@@ -8,14 +8,14 @@ namespace Sapper
     {
         private bool _isFlag;
         private bool _enabled;
-        private Sapper.Forms.MainForm _senderForm;
+        private static Sapper.Forms.MainForm _senderForm;
 
         internal bool IsPressed;
         internal bool IsBomb;
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
-        internal System.Collections.Generic.List<CellOfGameField> NoBombsCells =
+        internal static System.Collections.Generic.List<CellOfGameField> NoBombsCells =
             new System.Collections.Generic.List<CellOfGameField>();
 
 
@@ -65,9 +65,9 @@ namespace Sapper
             this.Image = Properties.Textures.Win7.win7_close;
         }
 
-        internal void SetSenderForm(Sapper.Forms.MainForm sender)
+        internal static void SetSenderForm(Sapper.Forms.MainForm sender)
         {
-            this._senderForm = sender;
+            _senderForm = sender;
         }
 
         private void OnClick(object sender, EventArgs e)
