@@ -80,13 +80,13 @@ namespace Sapper.GameField
             {
                 this.IsPressed = true;
                 this.EnabledClick = false;
-                
+
                 if (true == this.IsBomb)
                     ClickBomb();
-                else if (0 == this.CountSurroundingCellsWithBomb)
-                    ClickNullCell();
                 else if (true == this.IsHp)
                     ClickHp();
+                else if (0 == this.CountSurroundingCellsWithBomb)
+                    ClickNullCell();             
                 else
                     ClickNotNullCell();
             }
@@ -119,7 +119,10 @@ namespace Sapper.GameField
         {
             --_senderGameField.CountNoBombsCells;
 
-            this.Image = Properties.Textures.Win7.win7_0;
+            if (false == this.IsHp)
+                this.Image = Properties.Textures.Win7.win7_0;
+            else
+                this.Image = Properties.Textures.Win7.win7_hp;
 
             for (int i = 0; i < this.SurroundingCells.Count; i++)
             {
@@ -134,35 +137,72 @@ namespace Sapper.GameField
 
             try
             {
-                switch (this.CountSurroundingCellsWithBomb)
+                if (false == this.IsHp)
                 {
-                    case 1:
-                        this.Image = Properties.Textures.Win7.win7_1;
-                        break;
-                    case 2:
-                        this.Image = Properties.Textures.Win7.win7_2;
-                        break;
-                    case 3:
-                        this.Image = Properties.Textures.Win7.win7_3;
-                        break;
-                    case 4:
-                        this.Image = Properties.Textures.Win7.win7_4;
-                        break;
-                    case 5:
-                        this.Image = Properties.Textures.Win7.win7_5;
-                        break;
-                    case 6:
-                        this.Image = Properties.Textures.Win7.win7_6;
-                        break;
-                    case 7:
-                        this.Image = Properties.Textures.Win7.win7_7;
-                        break;
-                    case 8:
-                        this.Image = Properties.Textures.Win7.win7_8;
-                        break;
 
-                    default:
-                        throw new ArgumentException("ERROR_TEXTURES_LOAD");
+                    switch (this.CountSurroundingCellsWithBomb)
+                    {
+                        case 1:
+                            this.Image = Properties.Textures.Win7.win7_1;
+                            break;
+                        case 2:
+                            this.Image = Properties.Textures.Win7.win7_2;
+                            break;
+                        case 3:
+                            this.Image = Properties.Textures.Win7.win7_3;
+                            break;
+                        case 4:
+                            this.Image = Properties.Textures.Win7.win7_4;
+                            break;
+                        case 5:
+                            this.Image = Properties.Textures.Win7.win7_5;
+                            break;
+                        case 6:
+                            this.Image = Properties.Textures.Win7.win7_6;
+                            break;
+                        case 7:
+                            this.Image = Properties.Textures.Win7.win7_7;
+                            break;
+                        case 8:
+                            this.Image = Properties.Textures.Win7.win7_8;
+                            break;
+
+                        default:
+                            throw new ArgumentException("ERROR_TEXTURES_LOAD");
+                    }
+                }
+                else
+                {
+                    switch (this.CountSurroundingCellsWithBomb)
+                    {
+                        case 1:
+                            this.Image = Properties.Textures.Win7.win7_1_hp;
+                            break;
+                        case 2:
+                            this.Image = Properties.Textures.Win7.win7_2_hp;
+                            break;
+                        case 3:
+                            this.Image = Properties.Textures.Win7.win7_3_hp;
+                            break;
+                        case 4:
+                            this.Image = Properties.Textures.Win7.win7_4_hp;
+                            break;
+                        case 5:
+                            this.Image = Properties.Textures.Win7.win7_5_hp;
+                            break;
+                        case 6:
+                            this.Image = Properties.Textures.Win7.win7_6_hp;
+                            break;
+                        case 7:
+                            this.Image = Properties.Textures.Win7.win7_7_hp;
+                            break;
+                        case 8:
+                            this.Image = Properties.Textures.Win7.win7_8_hp;
+                            break;
+
+                        default:
+                            throw new ArgumentException("ERROR_TEXTURES_LOAD");
+                    }
                 }
             }
             catch (ArgumentException exeption)
@@ -172,9 +212,12 @@ namespace Sapper.GameField
         }
         private void ClickHp()
         {
-            --_senderGameField.CountNoBombsCells;
             ++_senderGameField.GetSenderForm.HpPlayer;
 
+            if (0 == this.CountSurroundingCellsWithBomb)
+                ClickNullCell();
+            else
+                ClickNotNullCell();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {

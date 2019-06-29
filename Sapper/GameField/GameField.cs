@@ -128,7 +128,8 @@ namespace Sapper.GameField
                 int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
                 int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
 
-                if (false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
+                if (false == _gameField[tempRandomWidth, tempRandomHeight].IsHp &&
+                    false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
                     _gameField[tempRandomWidth, tempRandomHeight].IsBomb = true;
                 else
                     --i;
@@ -146,7 +147,8 @@ namespace Sapper.GameField
                 int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
                 int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
 
-                if (false == _gameField[tempRandomWidth, tempRandomHeight].IsHp)
+                if (false == _gameField[tempRandomWidth, tempRandomHeight].IsHp && 
+                    false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
                     _gameField[tempRandomWidth, tempRandomHeight].IsHp = true;
                 else
                     --i;
