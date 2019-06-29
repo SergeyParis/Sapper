@@ -4,6 +4,9 @@ namespace Sapper.Forms
 {
     partial class StarterForm
     {
+        private int _chanceOfExplosionBombs = 100;
+        internal int ChanceOfExplosionBombs => _chanceOfExplosionBombs;
+
         private const int ADVANCED_SETTINGS_LOCATION_Y_FORM = 100;
 
         private const int ADVANCED_SETTINGS_LOCATION_X_FIRST_COLUMN = 15;
@@ -49,7 +52,7 @@ namespace Sapper.Forms
                                                                            ADVANCED_SETTINGS_LOCATION_Y_SECOND_COLUMN);
             _chanceOfExplosionTextBox.Enabled = false;
             _chanceOfExplosionTextBox.Text = "100%";
-            _chanceOfExplosionTextBox.TextChanged += new System.EventHandler(this.ChanceOfExplosionTextBox_TextChanged);
+            _chanceOfExplosionTextBox.LostFocus += new System.EventHandler(this.ChanceOfExplosionTextBox_LostFocus);
 
             this.Controls.Add(_chanceOfExplosionCheckBox);
             this.Controls.Add(_chanceOfExplosionTextBox);
@@ -61,23 +64,31 @@ namespace Sapper.Forms
             else
                 this._chanceOfExplosionTextBox.Enabled = false;
         }
-        private void ChanceOfExplosionTextBox_TextChanged(object sender, EventArgs e)
+        private void ChanceOfExplosionTextBox_LostFocus(object sender, EventArgs e)
         {
-            if (this._chanceOfExplosionTextBox.Text.Length > 3)
+            string text = this._chanceOfExplosionTextBox.Text.Remove(this._chanceOfExplosionTextBox.Text.Length - 1);
+
+            foreach (char c in text)
+                if (57 < c || c < 48)
+                {
+                    this._chanceOfExplosionTextBox.Text = Convert.ToString(_chanceOfExplosionBombs); ;
+                    this._chanceOfExplosionTextBox.AppendText("%");
+                    
+                    return;
+                }
+
+            if (100 < Convert.ToInt32(text) || 1 > Convert.ToInt32(text))
+            {
+                this._chanceOfExplosionTextBox.Text = Convert.ToString(_chanceOfExplosionBombs); ;
+                this._chanceOfExplosionTextBox.AppendText("%");
+
                 return;
-            this._chanceOfExplosionTextBox.Text.Remove(this._chanceOfExplosionTextBox.Text.Length - 1);
+            }
             
-            foreach (char c in this._chanceOfExplosionTextBox.Text)
-                if (c != '0' ||
-                    c != '1' ||
-                    c != '2' ||
-                    c != '3' ||
-                    c != '4' ||
-                    c != '5' ||
-                    c != '6' ||
-                    c != '7' ||
-                    c != '8' ||
-                    c != '9') return;
+            this._chanceOfExplosionTextBox.Text = text;
+            this._chanceOfExplosionTextBox.AppendText("%");
+            
+            _chanceOfExplosionBombs = Convert.ToInt32(text);
         }
 
         private void HideAdvancedSettings()
