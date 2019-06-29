@@ -180,7 +180,6 @@ namespace Sapper
         {
             foreach (var field in _gameField)
                 if (false == field.IsBomb)
-                    // this.NoBombsCells.Add(field);
                     this.CountNoBombsCells++;
         }
     }

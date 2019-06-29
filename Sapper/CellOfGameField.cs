@@ -48,6 +48,9 @@ namespace Sapper
 
             this.Click += new EventHandler(OnClick);
             this.MouseDown += new MouseEventHandler(OnMouseDown);
+
+            // Remove focus
+            this.TabStop = false;
         }
 
         internal void ClearField()
@@ -75,8 +78,7 @@ namespace Sapper
             {
                 this.IsPressed = true;
                 this.EnabledClick = false;
-
-                // _senderGameField.NoBombsCells.RemoveAt(_senderGameField.NoBombsCells.IndexOf(this));
+                
                 --_senderGameField.CountNoBombsCells;
 
                 if (true == this.IsBomb)
@@ -142,9 +144,10 @@ namespace Sapper
 
                 }
             }
-            // if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.NoBombsCells.Count))
             if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.CountNoBombsCells))
                 _senderGameField.GetSenderForm.GameWin();
+
+            _senderGameField.GetSenderForm.Focus();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
