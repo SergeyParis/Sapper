@@ -5,10 +5,12 @@ namespace Sapper
 {
     class GameField
     {
-        private CellOfGameField[,] _gameField;
+        private readonly CellOfGameField[,] _gameField;
 
         internal System.Collections.Generic.List<CellOfGameField> NoBombsCells =
             new System.Collections.Generic.List<CellOfGameField>();
+
+        internal int CountNoBombsCells;
 
         private readonly int _height;
         private readonly int _width;
@@ -178,7 +180,8 @@ namespace Sapper
         {
             foreach (var field in _gameField)
                 if (false == field.IsBomb)
-                    this.NoBombsCells.Add(field);
+                    // this.NoBombsCells.Add(field);
+                    this.CountNoBombsCells++;
         }
     }
 }

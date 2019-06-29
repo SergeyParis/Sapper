@@ -15,7 +15,7 @@ namespace Sapper
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
-
+        
         private bool IsFlag
         {
             get
@@ -76,8 +76,8 @@ namespace Sapper
                 this.IsPressed = true;
                 this.EnabledClick = false;
 
-                try { _senderGameField.NoBombsCells.RemoveAt(_senderGameField.NoBombsCells.IndexOf(this)); }
-                catch { }
+                // _senderGameField.NoBombsCells.RemoveAt(_senderGameField.NoBombsCells.IndexOf(this));
+                --_senderGameField.CountNoBombsCells;
 
                 if (true == this.IsBomb)
                 {
@@ -142,7 +142,8 @@ namespace Sapper
 
                 }
             }
-            if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.NoBombsCells.Count))
+            // if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.NoBombsCells.Count))
+            if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.CountNoBombsCells))
                 _senderGameField.GetSenderForm.GameWin();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
