@@ -93,6 +93,8 @@ namespace Sapper.Forms
 
             this._timerThisGame.Reset();
             this._countBombsRemains.SetCountBombs(_countOfBombs);
+
+            this._resetButton.Image = Properties.Textures.Win7.win7_resetGame;
         }
         public void ChangeSize()
         {
