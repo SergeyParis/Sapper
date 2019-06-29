@@ -69,6 +69,8 @@ namespace Sapper
         }
         public static void GameFieldRebuild()
         {
+            GameFieldClear();
+
             GameFieldPlacingBombs();
             SetCountSurroundingCellsWithBomb();
             SetNoBombSells();
@@ -186,16 +188,28 @@ namespace Sapper
 
             for (int i = 0; i < _senderForm.CountOfBombs; i++)
             {
-                _senderForm.GameFieldButtons[
-                    random.Next(_senderForm.GameFieldWidth),
-                    random.Next(_senderForm.GameFieldHeight)]
-                    .IsBomb = true;
+                int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
+                int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
+
+                if (false == _senderForm.GameFieldButtons[tempRandomWidth, tempRandomHeight].IsBomb)
+                    _senderForm.GameFieldButtons[tempRandomWidth, tempRandomHeight].IsBomb = true;
+                else
+                    --i;
+            }
+        }
+        private static void GameFieldClear()
+        {
+            foreach (var field in _senderForm.GameFieldButtons)
+            {
+                field.ClearField();
             }
         }
         private void ClearField()
         {
             this._isPressed = false;
             this._isFlag = false;
+            this.IsBomb = false;
+
             this.CountSurroundingCellsWithBomb = 0;
 
             this.Image = Properties.Textures.Win7.win7_close;
