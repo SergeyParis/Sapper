@@ -14,7 +14,7 @@ namespace Sapper.Forms
         public int GameFieldWidth => _gameFieldWidth;
         public int GameFieldHeight => _gameFieldHeight;
         public int CountOfBombs => _countOfBombs;
-        internal CellOfGameField [,] GameFieldButtons => _gameFieldButtons;
+        internal GameField GameField => _gameField;
 
         public MainForm()
         {
@@ -52,12 +52,12 @@ namespace Sapper.Forms
         {
             _timerThisGame.Stop();
             this._resetButton.Image = Properties.Textures.Win7.win7_resetGameWin;
-            CellOfGameField.GameFieldLock();
+            _gameField.Lock();
         }
         public void GameLose()
         {
             _timerThisGame.Stop();
-            CellOfGameField.GameFieldOpen();
+            _gameField.Open();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -80,13 +80,20 @@ namespace Sapper.Forms
             _starterForm.Show();
             this.Hide();
         }
-
         private void OnClickResetButton(object sender, EventArgs e)
         {
             this.GameFieldRebuild();
 
             this._timerThisGame.Reset();
             this._countBombsRemains.SetCountBombs(_countOfBombs);
+        }
+        public void ChangeSize()
+        {
+            if (GameFieldWidth > 0 && GameFieldHeight > 0)
+                this.Size =
+                    new System.Drawing.Size(
+                        _gameField.SizeX + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
+                        _gameField.SizeY + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
         }
     }
 }

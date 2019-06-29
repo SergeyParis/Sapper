@@ -73,6 +73,7 @@
     <Compile Include="Forms\StarterForm.Designer.cs">
       <DependentUpon>StarterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameField.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\Counter.cs">

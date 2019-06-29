@@ -6,20 +6,20 @@ namespace Sapper
 {
     internal sealed class CellOfGameField : System.Windows.Forms.Button
     {
-        private static Sapper.Forms.MainForm _senderForm;
-
-        private System.Collections.Generic.List<CellOfGameField> _surroundingCells =
-            new System.Collections.Generic.List<CellOfGameField>();
-        private static System.Collections.Generic.List<CellOfGameField> _noBombsCells =
-            new System.Collections.Generic.List<CellOfGameField>();
-
-        private bool _isPressed;
         private bool _isFlag;
         private bool _enabled;
+        private Sapper.Forms.MainForm _senderForm;
 
-        public static System.Collections.Generic.List<CellOfGameField> NoBombsCells => _noBombsCells;
-        public int CountSurroundingCellsWithBomb { get; set; }
-        public bool IsBomb { get; set; }
+        internal bool IsPressed;
+        internal bool IsBomb;
+        internal int CountSurroundingCellsWithBomb;
+        internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
+            new System.Collections.Generic.List<CellOfGameField>();
+        internal System.Collections.Generic.List<CellOfGameField> NoBombsCells =
+            new System.Collections.Generic.List<CellOfGameField>();
+
+
+        
         private bool IsFlag
         {
             get
@@ -28,18 +28,18 @@ namespace Sapper
             }
             set
             {
-                if (false == this._isPressed)
+                if (false == this.IsPressed)
                     this._isFlag = value;
             }
         }
 
-        public CellOfGameField() : this(false) { }
-        public CellOfGameField(bool isBomb) : base()
+        internal CellOfGameField() : this(false) { }
+        internal CellOfGameField(bool isBomb) : base()
         {
             this.FlatStyle = FlatStyle.Flat;
 
             this.IsBomb = isBomb;
-            this._isPressed = false;
+            this.IsPressed = false;
 
             if (false == this.IsBomb)
                 this.CountSurroundingCellsWithBomb = 0;
@@ -54,159 +54,9 @@ namespace Sapper
             this.MouseDown += new MouseEventHandler(OnMouseDown);
         }
 
-        public static void SetSenderForm(Form senderForm)
+        internal void ClearField()
         {
-            _senderForm = senderForm as Sapper.Forms.MainForm;
-        }
-        public static void GameFieldBuild()
-        {
-            GameFieldCreateButtons();
-            GameFieldChangeSize();
-            GameFieldPlacingBombs();
-            SetRefSurroundingCells();
-            SetCountSurroundingCellsWithBomb();
-            SetNoBombSells();
-        }
-        public static void GameFieldRebuild()
-        {
-            GameFieldClear();
-
-            GameFieldPlacingBombs();
-            SetCountSurroundingCellsWithBomb();
-            SetNoBombSells();
-        }
-        public static void GameFieldLock()
-        {
-            foreach (CellOfGameField field in _senderForm.GameFieldButtons)
-                field._enabled = false;
-        }
-        public static void GameFieldUnlock()
-        {
-            foreach (CellOfGameField field in _senderForm.GameFieldButtons)
-                field._enabled = true;
-        }
-        public static void GameFieldOpen()
-        {
-            if (null == _senderForm) return;
-
-            foreach (var field in _senderForm?.GameFieldButtons)
-                if (false == field._isPressed)
-                    field.PerformClick();
-        }
-        public static void GameFieldClose()
-        {
-            if (null == _senderForm) return;
-
-            foreach (var field in _senderForm.GameFieldButtons)
-                field.ClearField();
-        }
-
-        private static void SetRefSurroundingCells()
-        {
-            if (null == _senderForm) return;
-
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
-                {
-                    for (int k = -1; k < 2; k++)
-                        for (int l = -1; l < 2; l++)
-                        {
-                            if ((0 == k) && (0 == l)) { continue; }
-
-                            try
-                            {
-                                _senderForm.GameFieldButtons[i, j].
-                                    _surroundingCells.Add(_senderForm.GameFieldButtons[i - k, j - l]);
-                            }
-                            catch { continue; }
-                        }
-                }
-        }
-        private static void SetCountSurroundingCellsWithBomb()
-        {
-            if (null == _senderForm) return;
-
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
-                {
-
-                    for (int k = -1; k < 2; k++)
-                        for (int l = -1; l < 2; l++)
-                        {
-                            if ((0 == k) && (0 == l)) { continue; }
-
-                            try
-                            {
-                                if (_senderForm.GameFieldButtons[i - k, j - l].IsBomb)
-                                    _senderForm.GameFieldButtons[i, j].CountSurroundingCellsWithBomb++;
-                            }
-                            catch { continue; }
-                        }
-
-
-                }
-        }
-        private static void SetNoBombSells()
-        {
-            if (null == _senderForm) return;
-
-            foreach (var field in _senderForm.GameFieldButtons)
-                if (false == field.IsBomb)
-                    _noBombsCells.Add(field);
-        }
-        private static void GameFieldChangeSize()
-        {
-            if (_senderForm?.GameFieldWidth > 0 && _senderForm.GameFieldHeight > 0)
-                _senderForm.Size =
-                    new System.Drawing.Size(
-                        (_senderForm.GameFieldButtons[_senderForm.GameFieldWidth - 1,
-                            _senderForm.GameFieldHeight - 1].Location.X) + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
-                        (_senderForm.GameFieldButtons[_senderForm.GameFieldWidth - 1,
-                            _senderForm.GameFieldHeight - 1].Location.Y) + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
-        }
-        private static void GameFieldCreateButtons()
-        {
-            if (null == _senderForm) return;
-
-            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
-                {
-                    _senderForm.GameFieldButtons[i, j] = new CellOfGameField();
-                    _senderForm.GameFieldButtons[i, j].Location =
-                        new System.Drawing.Point(
-                            Sapper.Forms.MainForm.FORM_PADDING_SIDE + (i * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)),
-                            Sapper.Forms.MainForm.FORM_PADDING_UP + (j * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)));
-
-                    _senderForm.Controls.Add(_senderForm.GameFieldButtons[i, j]);
-                }
-        }
-        private static void GameFieldPlacingBombs()
-        {
-            if (null == _senderForm) return;
-
-            Random random = new Random();
-
-            for (int i = 0; i < _senderForm.CountOfBombs; i++)
-            {
-                int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
-                int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
-
-                if (false == _senderForm.GameFieldButtons[tempRandomWidth, tempRandomHeight].IsBomb)
-                    _senderForm.GameFieldButtons[tempRandomWidth, tempRandomHeight].IsBomb = true;
-                else
-                    --i;
-            }
-        }
-        private static void GameFieldClear()
-        {
-            foreach (var field in _senderForm.GameFieldButtons)
-            {
-                field.ClearField();
-            }
-        }
-        private void ClearField()
-        {
-            this._isPressed = false;
+            this.IsPressed = false;
             this._isFlag = false;
             this.IsBomb = false;
 
@@ -215,16 +65,21 @@ namespace Sapper
             this.Image = Properties.Textures.Win7.win7_close;
         }
 
+        internal void SetSenderForm(Sapper.Forms.MainForm sender)
+        {
+            this._senderForm = sender;
+        }
+
         private void OnClick(object sender, EventArgs e)
         {
             _senderForm?.TimerStart();
 
-            if (false == this._isPressed && false == this.IsFlag)
+            if (false == this.IsPressed && false == this.IsFlag)
             {
-                this._isPressed = true;
+                this.IsPressed = true;
                 this._enabled = false;
 
-                try { _noBombsCells.RemoveAt(_noBombsCells.IndexOf(this)); }
+                try { NoBombsCells.RemoveAt(NoBombsCells.IndexOf(this)); }
                 catch { }
 
                 if (true == this.IsBomb)
@@ -236,11 +91,11 @@ namespace Sapper
                 {
                     this.Image = Properties.Textures.Win7.win7_0;
 
-                    for (int i = 0; i < this._surroundingCells.Count; i++)
+                    for (int i = 0; i < this.SurroundingCells.Count; i++)
                     {
-                        if (null == _surroundingCells.ToArray()[i])
+                        if (null == SurroundingCells.ToArray()[i])
                             break;
-                        _surroundingCells.ToArray()[i].PerformClick();
+                        SurroundingCells.ToArray()[i].PerformClick();
                     }
                 }
                 else
@@ -285,22 +140,22 @@ namespace Sapper
 
                 }
             }
-            if ((null != _senderForm) && (0 == _noBombsCells.Count))
+            if ((null != _senderForm) && (0 == NoBombsCells.Count))
                 _senderForm.GameWin();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
             if (MouseButtons.Right == e.Button)
             {
-                if (false == this._isPressed)
+                if (false == this.IsPressed)
                 {
                     this.IsFlag = !(this.IsFlag);
-                    if (true == this.IsFlag && false == this._isPressed)
+                    if (true == this.IsFlag && false == this.IsPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_flag;
                         _senderForm?.SetCounterBombsDecrease(1);
                     }
-                    else if (false == this._isPressed)
+                    else if (false == this.IsPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_close;
                         _senderForm?.SetCounterBombsIncrease(1);
@@ -310,16 +165,16 @@ namespace Sapper
                 {
                     int countSurroundingFlag = 0;
 
-                    foreach (var field in this._surroundingCells)
+                    foreach (var field in this.SurroundingCells)
                         if (field._isFlag)
                             countSurroundingFlag++;
 
                     if (countSurroundingFlag == this.CountSurroundingCellsWithBomb)
-                        for (int i = 0; i < _surroundingCells.Count; i++)
+                        for (int i = 0; i < SurroundingCells.Count; i++)
                         {
-                            if (null == _surroundingCells.ToArray()[i])
+                            if (null == SurroundingCells.ToArray()[i])
                                 break;
-                            _surroundingCells.ToArray()[i].PerformClick();
+                            SurroundingCells.ToArray()[i].PerformClick();
                         }
                 }
             }

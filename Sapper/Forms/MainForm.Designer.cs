@@ -93,19 +93,18 @@
         private const int COUNT_BOMBS_REMAINS_LOCATION_PADDING_WIDTH = 25 + 55; // + size control
         private const int COUNT_BOMBS_REMAINS_LOCATION_PADDING_HEIGHT = 40;
 
-        internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
-        internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
+        internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 60;    // kostuli
+        internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 80;   // kostuli
 
-        private CellOfGameField[,] _gameFieldButtons;
+        private GameField _gameField;
         private System.Windows.Forms.Button _resetButton;
         private Sapper.Controls.UserTimer _timerThisGame;
         private Sapper.Controls.CountBombsRemains _countBombsRemains;
         public void GameFieldCreate()
         {
-            _gameFieldButtons = new CellOfGameField[_gameFieldWidth, _gameFieldHeight];
+            _gameField = new GameField(this, _gameFieldWidth, _gameFieldHeight);
 
-            Sapper.CellOfGameField.SetSenderForm(this);
-            Sapper.CellOfGameField.GameFieldBuild();
+            _gameField.Build();
 
             /* Reset button */
             _resetButton = new System.Windows.Forms.Button();
@@ -131,7 +130,7 @@
         {
             for (int i = 0; i < _gameFieldWidth; i++)
                 for (int j = 0; j < GameFieldHeight; j++)
-                    this.Controls.Remove(GameFieldButtons[i, j]);
+                    this.Controls.Remove(GameField[i, j]);
 
             this.Controls.Remove(_resetButton);
             this.Controls.Remove(_timerThisGame);
@@ -139,11 +138,11 @@
         }
         public void GameFieldRebuild()
         {
-            Sapper.CellOfGameField.GameFieldClose();
+            _gameField.Close();
             _timerThisGame.Reset();
             _countBombsRemains.Reset();
 
-            Sapper.CellOfGameField.GameFieldRebuild();
+            _gameField.Rebuild();
         }
 
         private System.Windows.Forms.MenuStrip MenuStripMain;
