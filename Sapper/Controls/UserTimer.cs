@@ -32,7 +32,7 @@ namespace Sapper.Controls
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            base.OutTimerValue(_time);
+            base.SetValueCounter(_time);
             _time++;
         }
 

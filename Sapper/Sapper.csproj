@@ -49,11 +49,11 @@
     <Compile Include="CellOfGameField.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\CountBombsRemained.cs">
+    <Compile Include="Controls\CountBombsRemains.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\CountBombsRemained.Designer.cs">
-      <DependentUpon>CountBombsRemained.cs</DependentUpon>
+    <Compile Include="Controls\CountBombsRemains.Designer.cs">
+      <DependentUpon>CountBombsRemains.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UserTimer.cs">
       <SubType>UserControl</SubType>

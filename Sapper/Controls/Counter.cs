@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Sapper
 {
-    public partial class Counter : UserControl
+    public abstract partial class Counter : UserControl
     {
         private int value_1;
         private int value_10;
         private int value_100;
 
-        public Counter()
+        protected Counter()
         {
             InitializeComponent();
 
@@ -25,23 +25,35 @@ namespace Sapper
                 this.ValuePart_100.Image =
                 Properties.Textures.Win7.win7_timer_null;
         }
-        
-        protected void OutTimerValue(int currentTime)
-        {
-            value_1++;
 
-            if (10 == value_1)
+        private void SetValue(int value)
+        {
+            if (value > 1000)
+                return;
+
+            value_1 = value % 10;
+            value_10 = value % 100;
+            value_100 = value % 1000;
+        }
+
+        protected void SetValueCounter(int currentValue)
+        {
+            value_1 = currentValue;
+            OutConterValue();
+            ClearData();
+        }
+        private void OutConterValue()
+        {
+            while (10 <= value_1)
             {
-                value_1 = 0;
+                value_1 -= 10;
                 value_10++;
-            } 
-            if (10 == value_10)
+            }
+            while (10 <= value_10)
             {
-                value_10 = 0;
+                value_10 -= 10;
                 value_100++;
             }
-            if (9 == value_100)
-                Timer.Stop();
 
             switch (value_1)
             {
@@ -83,6 +95,12 @@ namespace Sapper
                 case 9: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_9; break;
             }
 
+        }
+        private void ClearData()
+        {
+            value_1 = 0;
+            value_10 = 0;
+            value_100 = 0;
         }
     }
 }

@@ -16,14 +16,16 @@ namespace Sapper.Forms
         public int CountOfBombs => _countOfBombs;
         public bool GameContinius { get; set; }
 
-        public MainForm ()
+        public MainForm()
         {
             InitializeComponent();
 
             _starterForm = new StarterForm(this);
+
+            this._countBombsRemains?.SetCountBombs(_countOfBombs);
         }
-        
-        public void SetPropertiesGameField (int gameFieldWidth, int gameFieldHeight, int countOfBombs)
+
+        public void SetPropertiesGameField(int gameFieldWidth, int gameFieldHeight, int countOfBombs)
         {
             this._gameFieldWidth = gameFieldWidth;
             this._gameFieldHeight = gameFieldHeight;
@@ -52,19 +54,27 @@ namespace Sapper.Forms
             this.GameContinius = false;
 
             this.Hide();
-            this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);      
+            this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);
             this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
-            this.Show();    
+            this.Show();
         }
 
         public void TimerStart()
         {
             this._timerThisGame.Start();
         }
-
         public void TimerStop()
         {
             this._timerThisGame.Stop();
+        }
+
+        public void SetCounterBombsIncrease(int value)
+        {
+            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs + value);
+        }
+        public void SetCounterBombsDecrease(int value)
+        {
+            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs - value);
         }
     }
 }

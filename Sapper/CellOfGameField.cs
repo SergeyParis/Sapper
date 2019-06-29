@@ -12,7 +12,7 @@ namespace Sapper
         public System.Collections.Generic.List<CellOfGameField> SurroundingCells = new List<CellOfGameField>();
         private bool _isPressed;
         private bool _isFlag;
-        
+
         public int CountSurroundingCellsWithBomb { get; set; }
         public bool IsBomb { get; set; }
         private bool IsFlag
@@ -27,7 +27,7 @@ namespace Sapper
                     this._isFlag = value;
             }
         }
-        
+
         public CellOfGameField() : this(false) { }
         public CellOfGameField(bool isBomb) : base()
         {
@@ -131,8 +131,11 @@ namespace Sapper
 
         private void OnClick(object sender, EventArgs e)
         {
-            ((Sapper.Forms.MainForm)_senderForm).GameContinius = true;
-            ((Sapper.Forms.MainForm)_senderForm).TimerStart();
+            if (null != _senderForm)
+            {
+                ((Sapper.Forms.MainForm)_senderForm).GameContinius = true;
+                ((Sapper.Forms.MainForm)_senderForm).TimerStart();
+            }
 
             if (false == this._isPressed && false == this.IsFlag)
             {
@@ -202,9 +205,15 @@ namespace Sapper
                 {
                     this.IsFlag = !(this.IsFlag);
                     if (true == this.IsFlag && false == this._isPressed)
+                    {
                         this.Image = Properties.Textures.Win7.win7_flag;
+                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsIncrease(1);
+                    }
                     else if (false == this._isPressed)
+                    {
                         this.Image = Properties.Textures.Win7.win7_close;
+                        ((Sapper.Forms.MainForm)_senderForm)?.SetCounterBombsDecrease(1);
+                    }
                 }
                 else
                 {
@@ -228,7 +237,7 @@ namespace Sapper
 
         public static void OpenAllGameField(Form sender)
         {
-            ((Sapper.Forms.MainForm) _senderForm).GameContinius = false;
+            ((Sapper.Forms.MainForm)_senderForm).GameContinius = false;
             ((Sapper.Forms.MainForm)_senderForm).TimerStop();
 
             Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;

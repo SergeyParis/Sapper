@@ -1,5 +1,4 @@
-﻿
-namespace Sapper.Forms
+﻿namespace Sapper.Forms
 {
     partial class MainForm
     {
@@ -90,13 +89,17 @@ namespace Sapper.Forms
 
         private const int TIMER_LOCATION_PADDING_WIDTH = 25;
         private const int TIMER_LOCATION_PADDING_HEIGHT = 40;
+
+        private const int COUNT_BOMBS_REMAINS_LOCATION_PADDING_WIDTH = 25 + 55; // + size control
+        private const int COUNT_BOMBS_REMAINS_LOCATION_PADDING_HEIGHT = 40;
         
-        internal const int  FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
+        internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
         internal const int  FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
 
         internal CellOfGameField[,] GameFieldButtons;
-        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button _resetButton;
         private Sapper.Controls.UserTimer _timerThisGame;
+        private Sapper.Controls.CountBombsRemains _countBombsRemains;
         public void GameFieldCreate (int gameFieldWidth, int gameFieldHeight, int countOfBomb)
         {
             GameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
@@ -108,21 +111,24 @@ namespace Sapper.Forms
             Sapper.CellOfGameField.SetCountSurroundingCellsAll();
 
             /* Reset button */
-            resetButton = new System.Windows.Forms.Button();
-            resetButton.Size = new System.Drawing.Size(RESET_BUTTON_GAME_SIZE, RESET_BUTTON_GAME_SIZE);
-            resetButton.Location = new System.Drawing.Point(this.Size.Width / 2 - RESET_BUTTON_GAME_SIZE,
+            _resetButton = new System.Windows.Forms.Button();
+            _resetButton.Size = new System.Drawing.Size(RESET_BUTTON_GAME_SIZE, RESET_BUTTON_GAME_SIZE);
+            _resetButton.Location = new System.Drawing.Point(this.Size.Width / 2 - RESET_BUTTON_GAME_SIZE,
                                                             RESET_BUTTON_PADDING_HEIGHT);
-            resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            resetButton.Image = Properties.Textures.Win7.win7_resetGame;
-            resetButton.Click += new System.EventHandler(OnClickResetButton);
-
-            this.Controls.Add(resetButton);
+            _resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            _resetButton.Image = Properties.Textures.Win7.win7_resetGame;
+            _resetButton.Click += new System.EventHandler(OnClickResetButton);
+            this.Controls.Add(_resetButton);
 
             /* Timer */
             _timerThisGame = new Sapper.Controls.UserTimer();
             _timerThisGame.Location = new System.Drawing.Point(TIMER_LOCATION_PADDING_WIDTH, TIMER_LOCATION_PADDING_HEIGHT);
-
             this.Controls.Add(_timerThisGame);
+
+            /* Counter bombs */
+            _countBombsRemains = new Sapper.Controls.CountBombsRemains();
+            _countBombsRemains.Location = new System.Drawing.Point(this.Size.Width - COUNT_BOMBS_REMAINS_LOCATION_PADDING_WIDTH, COUNT_BOMBS_REMAINS_LOCATION_PADDING_HEIGHT);
+            this.Controls.Add(_countBombsRemains);
         }
         private void GameFieldDelete (int gameFieldWidth, int gameFieldHeight)
         {
@@ -130,8 +136,9 @@ namespace Sapper.Forms
                 for (int j = 0; j < GameFieldHeight; j++)
                     this.Controls.Remove(GameFieldButtons[i, j]);
 
-            this.Controls.Remove(resetButton);
+            this.Controls.Remove(_resetButton);
             this.Controls.Remove(_timerThisGame);
+            this.Controls.Remove(_countBombsRemains);
         }
 
         private System.Windows.Forms.MenuStrip MenuStripMain;
