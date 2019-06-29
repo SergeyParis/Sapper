@@ -19,13 +19,13 @@
         internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 60;    // kostuli
         internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 80;   // kostuli
 
-        private GameField _gameField;
+        private Sapper.GameField.GameField _gameField;
         private System.Windows.Forms.Button _resetButton;
         private Sapper.Controls.UserTimer _timerThisGame;
         private Sapper.Controls.CountBombsRemains _countBombsRemains;
         public void GameFieldCreate()
         {
-            _gameField = new GameField(this, _getGameFieldWidth, _getGameFieldHeight);
+            _gameField = new Sapper.GameField.GameField(this, _getGameFieldWidth, _getGameFieldHeight);
 
             _gameField.Build();
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using Sapper.GameField;
 using System.Windows.Forms;
 
 namespace Sapper.Forms
@@ -17,7 +17,7 @@ namespace Sapper.Forms
         internal int GetGameFieldHeight => _getGameFieldHeight;
         internal int GetCountOfBombs => _getCountOfBombs;
         internal int GetChanceOfExplosionBombs => _chanceOfExplosionBombs;
-        internal GameField GameField => _gameField;
+        internal Sapper.GameField.GameField GameField => _gameField;
         internal bool GetThisGameStop  => _gameStop;
         internal bool GetTimerEnabled => _timerThisGame.GetEnabled;
 
