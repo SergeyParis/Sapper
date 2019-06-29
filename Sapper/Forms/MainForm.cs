@@ -14,7 +14,7 @@ namespace Sapper.Forms
         public int GameFieldWidth => _gameFieldWidth;
         public int GameFieldHeight => _gameFieldHeight;
         public int CountOfBombs => _countOfBombs;
-        public bool GameContinius { get; set; }
+        internal CellOfGameField [,] GameFieldButtons => _gameFieldButtons;
 
         public MainForm()
         {
@@ -29,6 +29,37 @@ namespace Sapper.Forms
             this._gameFieldHeight = gameFieldHeight;
             this._countOfBombs = countOfBombs;
         }
+        
+        public void TimerStart()
+        {
+            this._timerThisGame.Start();
+        }
+        public void TimerStop()
+        {
+            this._timerThisGame.Stop();
+        }
+
+        public void SetCounterBombsIncrease(int value)
+        {
+            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs + value);
+        }
+        public void SetCounterBombsDecrease(int value)
+        {
+            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs - value);
+        }
+
+        public void GameWin()
+        {
+            _timerThisGame.Stop();
+            this._resetButton.Image = Properties.Textures.Win7.win7_resetGameWin;
+            CellOfGameField.GameFieldLock();
+        }
+        public void GameLose()
+        {
+            _timerThisGame.Stop();
+            CellOfGameField.GameFieldOpen();
+        }
+
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.Hide();
@@ -52,26 +83,7 @@ namespace Sapper.Forms
 
         private void OnClickResetButton(object sender, EventArgs e)
         {
-            this.GameContinius = false;
             this.GameFieldRebuild();
-        }
-
-        public void TimerStart()
-        {
-            this._timerThisGame.Start();
-        }
-        public void TimerStop()
-        {
-            this._timerThisGame.Stop();
-        }
-
-        public void SetCounterBombsIncrease(int value)
-        {
-            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs + value);
-        }
-        public void SetCounterBombsDecrease(int value)
-        {
-            this._countBombsRemains.SetCountBombs(this._countBombsRemains.GetBombs - value);
         }
     }
 }

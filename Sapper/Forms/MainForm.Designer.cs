@@ -96,16 +96,16 @@
         internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
         internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
 
-        internal CellOfGameField[,] GameFieldButtons;
+        private CellOfGameField[,] _gameFieldButtons;
         private System.Windows.Forms.Button _resetButton;
         private Sapper.Controls.UserTimer _timerThisGame;
         private Sapper.Controls.CountBombsRemains _countBombsRemains;
         public void GameFieldCreate()
         {
-            GameFieldButtons = new CellOfGameField[_gameFieldWidth, _gameFieldHeight];
+            _gameFieldButtons = new CellOfGameField[_gameFieldWidth, _gameFieldHeight];
 
             Sapper.CellOfGameField.SetSenderForm(this);
-            Sapper.CellOfGameField.BuildGameField();
+            Sapper.CellOfGameField.GameFieldBuild();
 
             /* Reset button */
             _resetButton = new System.Windows.Forms.Button();
@@ -139,11 +139,11 @@
         }
         public void GameFieldRebuild()
         {
-            Sapper.CellOfGameField.CloseAllGameField();
+            Sapper.CellOfGameField.GameFieldClose();
             _timerThisGame.Reset();
             _countBombsRemains.Reset();
 
-            Sapper.CellOfGameField.RebuildGameField();
+            Sapper.CellOfGameField.GameFieldRebuild();
         }
 
         private System.Windows.Forms.MenuStrip MenuStripMain;
@@ -151,4 +151,3 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
-
