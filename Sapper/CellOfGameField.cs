@@ -8,15 +8,14 @@ namespace Sapper
     {
         private bool _isFlag;
         private bool _enabled;
-        private static Sapper.Forms.MainForm _senderForm;
+        private GameField _senderGameField;
 
         internal bool IsPressed;
         internal bool IsBomb;
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
-        internal static System.Collections.Generic.List<CellOfGameField> NoBombsCells =
-            new System.Collections.Generic.List<CellOfGameField>();
+        
 
 
         
@@ -65,27 +64,27 @@ namespace Sapper
             this.Image = Properties.Textures.Win7.win7_close;
         }
 
-        internal static void SetSenderForm(Sapper.Forms.MainForm sender)
+        internal void SetSenderGameField(GameField sender)
         {
-            _senderForm = sender;
+            _senderGameField = sender;
         }
 
         private void OnClick(object sender, EventArgs e)
         {
-            _senderForm?.TimerStart();
+            _senderGameField.GetSenderForm.TimerStart();
 
             if (false == this.IsPressed && false == this.IsFlag)
             {
                 this.IsPressed = true;
                 this._enabled = false;
-
-                try { NoBombsCells.RemoveAt(NoBombsCells.IndexOf(this)); }
+                
+                try { _senderGameField.NoBombsCells.RemoveAt(_senderGameField.NoBombsCells.IndexOf(this)); }
                 catch { }
 
                 if (true == this.IsBomb)
                 {
                     this.Image = Properties.Textures.Win7.win7_bombLose;
-                    _senderForm?.GameLose();
+                    _senderGameField.GetSenderForm.GameLose();
                 }
                 else if (0 == this.CountSurroundingCellsWithBomb)
                 {
@@ -140,8 +139,8 @@ namespace Sapper
 
                 }
             }
-            if ((null != _senderForm) && (0 == NoBombsCells.Count))
-                _senderForm.GameWin();
+            if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.NoBombsCells.Count))
+                _senderGameField.GetSenderForm.GameWin();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
@@ -153,12 +152,12 @@ namespace Sapper
                     if (true == this.IsFlag && false == this.IsPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_flag;
-                        _senderForm?.SetCounterBombsDecrease(1);
+                        _senderGameField.GetSenderForm.SetCounterBombsDecrease(1);
                     }
                     else if (false == this.IsPressed)
                     {
                         this.Image = Properties.Textures.Win7.win7_close;
-                        _senderForm?.SetCounterBombsIncrease(1);
+                        _senderGameField.GetSenderForm.SetCounterBombsIncrease(1);
                     }
                 }
                 else

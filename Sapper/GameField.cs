@@ -7,12 +7,16 @@ namespace Sapper
     {
         private CellOfGameField[,] _gameField;
 
+        internal System.Collections.Generic.List<CellOfGameField> NoBombsCells =
+            new System.Collections.Generic.List<CellOfGameField>();
+
         private readonly int _height;
         private readonly int _width;
         private readonly Sapper.Forms.MainForm _senderForm;
 
         public int SizeX => _gameField[_width - 1, _height - 1].Location.X;
         public int SizeY => _gameField[_width - 1, _height - 1].Location.Y;
+        public Sapper.Forms.MainForm GetSenderForm => _senderForm;
 
         public GameField(Sapper.Forms.MainForm sender, int width, int height)
         {
@@ -20,7 +24,6 @@ namespace Sapper
             _height = height;
             _senderForm = sender;
 
-            CellOfGameField.SetSenderForm(sender);
             _gameField = new CellOfGameField[_width, _height];
         }
 
@@ -37,6 +40,7 @@ namespace Sapper
             SetRefSurroundingCells();
             SetCountSurroundingCellsWithBomb();
             SetNoBombSells();
+            SetSenderGameFieldForFields();
         }
         public void Rebuild()
         {
@@ -45,6 +49,8 @@ namespace Sapper
             PlacingBombs();
             SetCountSurroundingCellsWithBomb();
             SetNoBombSells();
+
+            SetSenderGameFieldForFields();
         }
         public void Lock()
         {
@@ -68,6 +74,15 @@ namespace Sapper
                 field.ClearField();
         }
 
+        private void SetSenderGameFieldForFields()
+        {
+            foreach (var field in _gameField)
+            {
+                if (null == field)
+                    return;
+                field.SetSenderGameField(this);
+            }
+        }
         private void CreateButtons()
         {
             if (null == _senderForm) return;
@@ -157,7 +172,7 @@ namespace Sapper
         {
             foreach (var field in _gameField)
                 if (false == field.IsBomb)
-                    CellOfGameField.NoBombsCells.Add(field);
+                    this.NoBombsCells.Add(field);
         }
     }
 }
