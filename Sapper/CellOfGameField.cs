@@ -71,7 +71,7 @@ namespace Sapper
 
         private void OnClick(object sender, EventArgs e)
         {
-            if (false == _senderGameField.GetSenderForm.GetTimerEnabled)
+            if (false == _senderGameField.GetSenderForm.GetTimerEnabled && false == _senderGameField.GetSenderForm.GetThisGameStop)
                 _senderGameField.GetSenderForm.TimerStart();
 
             if (false == this.IsPressed && true == this.EnabledClick && false == this.IsFlag)
