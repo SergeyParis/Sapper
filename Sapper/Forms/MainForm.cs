@@ -7,15 +7,19 @@ namespace Sapper.Forms
     public partial class MainForm : Form
     {
         private readonly StarterForm _starterForm;
-        private int _getGameFieldWidth;
-        private int _getGameFieldHeight;
-        private int _getCountOfBombs;
+
+        private int _gameFieldWidth;
+        private int _gameFieldHeight;
+        private int _countOfBombs;
         private int _chanceOfExplosionBombs;
+        private int _countHpCells;
+
         private bool _gameStop = false;
-        
-        internal int GetGameFieldWidth => _getGameFieldWidth;
-        internal int GetGameFieldHeight => _getGameFieldHeight;
-        internal int GetCountOfBombs => _getCountOfBombs;
+        private int _hpPlayer;
+
+        internal int GameFieldWidth => _gameFieldWidth;
+        internal int GameFieldHeight => _gameFieldHeight;
+        internal int CountOfBombs => _countOfBombs;
         internal int GetChanceOfExplosionBombs => _chanceOfExplosionBombs;
         internal Sapper.GameField.GameField GameField => _gameField;
         internal bool GetThisGameStop  => _gameStop;
@@ -30,24 +34,25 @@ namespace Sapper.Forms
 
         public void SetPropertiesGameField(int gameFieldWidth, int gameFieldHeight, int countOfBombs)
         {
-            this._getGameFieldWidth = gameFieldWidth;
-            this._getGameFieldHeight = gameFieldHeight;
-            this._getCountOfBombs = countOfBombs;
+            this._gameFieldWidth = gameFieldWidth;
+            this._gameFieldHeight = gameFieldHeight;
+            this._countOfBombs = countOfBombs;
         }
-        public void SetChanceOfExplosionBombs(int chance)
+        public void SetPropertiesAdvancedGameField(int chanceExplosion, int countHpCells, int hpPlayer)
         {
-            _chanceOfExplosionBombs = chance;
+            _chanceOfExplosionBombs = chanceExplosion;
+            _countHpCells = countHpCells;
+            _hpPlayer = hpPlayer;
         }
 
         public void GetFocus()
         {
             this.label1.Focus();
         }
-
-
+        
         public void ChangeSize()
         {
-            if (GetGameFieldWidth > 0 && GetGameFieldHeight > 0)
+            if (GameFieldWidth > 0 && GameFieldHeight > 0)
                 this.Size =
                     new System.Drawing.Size(
                         _gameField.SizeX + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
@@ -99,7 +104,7 @@ namespace Sapper.Forms
             if (true == this.Visible)
             {
                 this.GameFieldCreate();
-                this._countBombsRemains.SetCountBombs(_getCountOfBombs);
+                this._countBombsRemains.SetCountBombs(_countOfBombs);
             }
             else
                 this.GameFieldDelete();
@@ -117,7 +122,7 @@ namespace Sapper.Forms
             this.GameFieldRebuild();
 
             this._timerThisGame.Reset();
-            this._countBombsRemains.SetCountBombs(_getCountOfBombs);
+            this._countBombsRemains.SetCountBombs(_countOfBombs);
 
             this._resetButton.Image = Properties.Textures.Win7.win7_resetGame;
 

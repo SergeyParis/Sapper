@@ -25,7 +25,7 @@
         private Sapper.Controls.CountBombsRemains _countBombsRemains;
         public void GameFieldCreate()
         {
-            _gameField = new Sapper.GameField.GameField(this, _getGameFieldWidth, _getGameFieldHeight);
+            _gameField = new Sapper.GameField.GameField(this, _gameFieldWidth, _gameFieldHeight);
 
             _gameField.Build();
 
@@ -51,8 +51,8 @@
         }
         private void GameFieldDelete()
         {
-            for (int i = 0; i < _getGameFieldWidth; i++)
-                for (int j = 0; j < GetGameFieldHeight; j++)
+            for (int i = 0; i < _gameFieldWidth; i++)
+                for (int j = 0; j < GameFieldHeight; j++)
                     this.Controls.Remove(GameField[i, j]);
 
             this.Controls.Remove(_resetButton);

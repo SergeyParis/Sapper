@@ -99,8 +99,8 @@ namespace Sapper.GameField
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
                 {
                     _gameField[i, j] = new CellOfGameField
                     {
@@ -118,10 +118,10 @@ namespace Sapper.GameField
 
             Random random = new Random();
 
-            for (int i = 0; i < _senderForm.GetCountOfBombs; i++)
+            for (int i = 0; i < _senderForm.CountOfBombs; i++)
             {
-                int tempRandomWidth = random.Next(_senderForm.GetGameFieldWidth);
-                int tempRandomHeight = random.Next(_senderForm.GetGameFieldHeight);
+                int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
+                int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
 
                 if (false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
                     _gameField[tempRandomWidth, tempRandomHeight].IsBomb = true;
@@ -133,8 +133,8 @@ namespace Sapper.GameField
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
                 {
                     for (int k = -1; k < 2; k++)
                         for (int l = -1; l < 2; l++)
@@ -154,8 +154,8 @@ namespace Sapper.GameField
         {
             if (null == _senderForm) return;
 
-            for (int i = 0; i < _senderForm.GetGameFieldWidth; i++)
-                for (int j = 0; j < _senderForm.GetGameFieldHeight; j++)
+            for (int i = 0; i < _senderForm.GameFieldWidth; i++)
+                for (int j = 0; j < _senderForm.GameFieldHeight; j++)
                 {
 
                     for (int k = -1; k < 2; k++)

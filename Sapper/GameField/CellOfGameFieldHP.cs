@@ -5,7 +5,6 @@
         private bool _isHP = false;
 
         public bool IsHP => _isHP;
-
-
+        
     }
 }

@@ -76,7 +76,7 @@ namespace Sapper.Forms
             ((MainForm)SenderForm).SetPropertiesGameField(Convert.ToInt32(this.fieldWidthTxtBox.Text),
                                                           Convert.ToInt32(this.fieldHeightTxtBox.Text),
                                                           Convert.ToInt32(this.countMinesTxtBox.Text));
-            ((MainForm)SenderForm).SetChanceOfExplosionBombs(_chanceOfExplosionBombs);
+            ((MainForm)SenderForm).SetPropertiesAdvancedGameField(_chanceOfExplosionBombs, _countHpCells, _countStartHp);
 
             SenderForm.Show();
         }
