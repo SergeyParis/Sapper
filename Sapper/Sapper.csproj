@@ -207,6 +207,30 @@
   <ItemGroup>
     <None Include="Resources\win7_hp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_1_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_2_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_3_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_4_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_5_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_6_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_7_hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\win7_8_hp.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

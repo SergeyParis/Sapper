@@ -124,26 +124,50 @@
   <data name="win7_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_1_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_1_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_2_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_2_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="win7_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_3_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_3_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_4_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_4_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="win7_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_5_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_5_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_6_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_6_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="win7_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_7.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_7_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_7_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_8_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_8_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="win7_bomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_bomb.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
