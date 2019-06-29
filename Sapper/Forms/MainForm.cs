@@ -106,5 +106,10 @@ namespace Sapper.Forms
                         _gameField.SizeX + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
                         _gameField.SizeY + Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
         }
+
+        public void GetFocus()
+        {
+            this.label1.Focus();
+        }
     }
 }

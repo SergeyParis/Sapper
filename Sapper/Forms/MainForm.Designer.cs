@@ -31,6 +31,7 @@
             this.MenuStripMain = new System.Windows.Forms.MenuStrip();
             this.GameMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.MenuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,12 +60,23 @@
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(86, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(6, 2);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 373);
             this.Controls.Add(this.MenuStripMain);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -148,5 +160,6 @@
         private System.Windows.Forms.MenuStrip MenuStripMain;
         private System.Windows.Forms.ToolStripMenuItem GameMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

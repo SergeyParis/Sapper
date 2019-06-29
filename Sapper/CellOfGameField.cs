@@ -147,7 +147,7 @@ namespace Sapper
             if ((null != _senderGameField.GetSenderForm) && (0 == _senderGameField.CountNoBombsCells))
                 _senderGameField.GetSenderForm.GameWin();
 
-            _senderGameField.GetSenderForm.Focus();
+            _senderGameField.GetSenderForm.GetFocus();
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
