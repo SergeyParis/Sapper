@@ -2,9 +2,6 @@
 {
     internal partial class CellOfGameField
     {
-        private bool _isHP = false;
-
-        public bool IsHP => _isHP;
-        
+        public bool IsHp { get; set; } = false;
     }
 }

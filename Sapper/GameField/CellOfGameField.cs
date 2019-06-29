@@ -10,8 +10,8 @@ namespace Sapper.GameField
         private GameField _senderGameField;
 
         internal bool EnabledClick = true;
-        internal bool IsPressed = false;
-        internal bool IsBomb = false;
+        internal bool IsPressed;
+        internal bool IsBomb;
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();

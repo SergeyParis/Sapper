@@ -21,6 +21,7 @@ namespace Sapper.Forms
         internal int GameFieldHeight => _gameFieldHeight;
         internal int CountOfBombs => _countOfBombs;
         internal int GetChanceOfExplosionBombs => _chanceOfExplosionBombs;
+        internal int GetCountHpCells => _countHpCells;
         internal Sapper.GameField.GameField GameField => _gameField;
         internal bool GetThisGameStop  => _gameStop;
         internal bool GetTimerEnabled => _timerThisGame.GetEnabled;

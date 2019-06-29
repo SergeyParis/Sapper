@@ -5,7 +5,7 @@ namespace Sapper.GameField
     class GameField
     {
         private readonly CellOfGameField[,] _gameField;
-        
+
         internal int CountNoBombsCells;
 
         private readonly int _height;
@@ -39,6 +39,9 @@ namespace Sapper.GameField
             SetCountSurroundingCellsWithBomb();
             SetNoBombSells();
             SetSenderGameFieldForFields();
+
+            if (_senderForm.GetCountHpCells > 0)
+                PlacingHpCells();
         }
         public void Rebuild()
         {
@@ -85,7 +88,7 @@ namespace Sapper.GameField
 
             CountNoBombsCells = 0;
         }
-        
+
         private void SetSenderGameFieldForFields()
         {
             foreach (var field in _gameField)
@@ -105,8 +108,8 @@ namespace Sapper.GameField
                     _gameField[i, j] = new CellOfGameField
                     {
                         Location = new System.Drawing.Point(
-                            Sapper.Forms.MainForm.FORM_PADDING_SIDE + (i*(Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)),
-                            Sapper.Forms.MainForm.FORM_PADDING_UP + (j*(Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)))
+                            Sapper.Forms.MainForm.FORM_PADDING_SIDE + (i * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)),
+                            Sapper.Forms.MainForm.FORM_PADDING_UP + (j * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)))
                     };
 
                     _senderForm.Controls.Add(_gameField[i, j]);
@@ -125,6 +128,24 @@ namespace Sapper.GameField
 
                 if (false == _gameField[tempRandomWidth, tempRandomHeight].IsBomb)
                     _gameField[tempRandomWidth, tempRandomHeight].IsBomb = true;
+                else
+                    --i;
+            }
+        }
+
+        private void PlacingHpCells()
+        {
+            if (null == _senderForm) return;
+
+            Random random = new Random();
+
+            for (int i = 0; i < _senderForm.GetCountHpCells; i++)
+            {
+                int tempRandomWidth = random.Next(_senderForm.GameFieldWidth);
+                int tempRandomHeight = random.Next(_senderForm.GameFieldHeight);
+
+                if (false == _gameField[tempRandomWidth, tempRandomHeight].IsHp)
+                    _gameField[tempRandomWidth, tempRandomHeight].IsHp = true;
                 else
                     --i;
             }
