@@ -94,15 +94,15 @@ namespace Sapper.Forms
         {
             GameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
 
-            Sapper.CellOfGameField.PlacingBombsOnBoard(gameFieldWidth, gameFieldHeight, this);
-            Sapper.CellOfGameField.ChangeSizeGameField(gameFieldWidth, gameFieldHeight, this);
-            Sapper.CellOfGameField.SetCountSurroundingCellsAll(gameFieldWidth, gameFieldHeight, this);
+            Sapper.CellOfGameField.CreategameFieldButtons(this);
+            Sapper.CellOfGameField.PlacingBombsOnBoard(this);
+            Sapper.CellOfGameField.ChangeSizeGameField(this);
+            Sapper.CellOfGameField.SetCountSurroundingCellsAll(this);
         }
-
         private void GameFieldDelete (int gameFieldWidth, int gameFieldHeight)
         {
             for (int i = 0; i < _gameFieldWidth; i++)
-                for (int j = 0; j < _gameFieldHeight; j++)
+                for (int j = 0; j < GameFieldHeight; j++)
                     this.Controls.Remove(GameFieldButtons[i, j]);
         }
 

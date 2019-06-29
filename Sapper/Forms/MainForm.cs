@@ -10,8 +10,12 @@ namespace Sapper.Forms
         private int _gameFieldWidth;
         private int _gameFieldHeight;
         private int _countOfBombs;
+        public int GameFieldWidth => _gameFieldWidth;
+        public int GameFieldHeight => _gameFieldHeight;
+        public int CountOfBombs => _countOfBombs;
 
-        public MainForm()
+
+        public MainForm ()
         {
             InitializeComponent();
 
@@ -32,9 +36,9 @@ namespace Sapper.Forms
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             if (true == this.Visible)
-                this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
+                this.GameFieldCreate(_gameFieldWidth, GameFieldHeight, CountOfBombs);
             else
-                this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);
+                this.GameFieldDelete(_gameFieldWidth, GameFieldHeight);
         }
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Sapper
@@ -13,11 +14,11 @@ namespace Sapper
         public bool IsThisBomb { get; set; }
         public int SurroundingCellsWithBomb { get; set; }
 
-        public CellOfGameField () : this(false) { }
-        public CellOfGameField (bool isThisBomb) : base()
+        public CellOfGameField() : this(false) { }
+        public CellOfGameField(bool isThisBomb) : base()
         {
             this.FlatStyle = FlatStyle.Flat;
-            
+
             this.IsThisBomb = isThisBomb;
             this._isPressed = false;
 
@@ -26,18 +27,18 @@ namespace Sapper
             else
                 this.SurroundingCellsWithBomb = -1;
 
+            this.FlatAppearance.BorderSize = 0; // delete border
             this.Size = new Size(Sapper.Forms.MainForm.SIZE_GAME_FIELD, Sapper.Forms.MainForm.SIZE_GAME_FIELD);
             this.Click += new EventHandler(OnClick);
         }
 
-
-        public static void SetCountSurroundingCellsAll (int gameFieldWidth, int gameFieldHeight, Form sender)
+        public static void SetCountSurroundingCellsAll(Form sender)
         {
             Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
 
             if (null != senderForm)
-                for (int i = 0; i < gameFieldWidth; i++)
-                    for (int j = 0; j < gameFieldHeight; j++)
+                for (int i = 0; i < senderForm.GameFieldWidth; i++)
+                    for (int j = 0; j < senderForm.GameFieldHeight; j++)
                     {
                         try
                         {
@@ -56,26 +57,26 @@ namespace Sapper
                         catch { continue; }
                     }
         }
-        public static void ChangeSizeGameField (int gameFieldWidth, int gameFieldHeight, Form sender)
+        public static void ChangeSizeGameField(Form sender)
         {
             Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
 
             if (null != senderForm)
-                if (gameFieldWidth > 0 && gameFieldHeight > 0)
+                if (senderForm.GameFieldWidth > 0 && senderForm.GameFieldHeight > 0)
                     senderForm.Size =
                         new System.Drawing.Size(
-                            (senderForm.GameFieldButtons[gameFieldWidth - 1, gameFieldHeight - 1].Location.X) +
+                            (senderForm.GameFieldButtons[senderForm.GameFieldWidth - 1, senderForm.GameFieldHeight - 1].Location.X) +
                             Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_WIDTH,
-                            (senderForm.GameFieldButtons[gameFieldWidth - 1, gameFieldHeight - 1].Location.Y) +
+                            (senderForm.GameFieldButtons[senderForm.GameFieldWidth - 1, senderForm.GameFieldHeight - 1].Location.Y) +
                             Sapper.Forms.MainForm.FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT);
         }
-        public static void PlacingBombsOnBoard (int gameFieldWidth, int gameFieldHeight, Form sender)
+        public static void CreategameFieldButtons(Form sender)
         {
             Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
 
             if (null != senderForm)
-                for (int i = 0; i < gameFieldWidth; i++)
-                    for (int j = 0; j < gameFieldHeight; j++)
+                for (int i = 0; i < senderForm.GameFieldWidth; i++)
+                    for (int j = 0; j < senderForm.GameFieldHeight; j++)
                     {
                         senderForm.GameFieldButtons[i, j] = new CellOfGameField();
                         senderForm.GameFieldButtons[i, j].Location =
@@ -86,14 +87,31 @@ namespace Sapper
                         senderForm.Controls.Add(senderForm.GameFieldButtons[i, j]);
                     }
         }
+        public static void PlacingBombsOnBoard(Form sender)
+        {
+            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
 
-        void OnClick (object sender, EventArgs e)
+            if (null != senderForm)
+            {
+                Random random = new Random();
+
+                for (int i = 0; i < senderForm.CountOfBombs; i++)
+                {
+                    senderForm.GameFieldButtons[
+                    random.Next(senderForm.GameFieldWidth),
+                    random.Next(senderForm.GameFieldHeight)]
+                    .IsThisBomb = true;
+                }
+            }
+        }
+
+        void OnClick(object sender, EventArgs e)
         {
             // gameStart = true;
 
-            if (true == this.Enabled)
+            if (false == this._isPressed)
             {
-                this.Enabled = false;
+                this._isPressed = true;
 
                 if (true == this.IsThisBomb)
                     this.Text = "B";
@@ -108,8 +126,41 @@ namespace Sapper
                         SurroundingCells.ToArray()[i].PerformClick();
                     }
                 }
-                else this.Text = Convert.ToString(SurroundingCellsWithBomb);
+                else
+                {
+                    try
+                    {
+                        switch (this.SurroundingCellsWithBomb)
+                        {
+                            case 1: this.Image = Properties.Textures.Win7.win7_1; break;
+                            case 2: this.Image = Properties.Textures.Win7.win7_2; break;
+                            case 3: this.Image = Properties.Textures.Win7.win7_3; break;
+                            case 4: this.Image = Properties.Textures.Win7.win7_4; break;
+                            case 5: this.Image = Properties.Textures.Win7.win7_5; break;
+                            case 6: this.Image = Properties.Textures.Win7.win7_6; break;
+                            case 7: this.Image = Properties.Textures.Win7.win7_7; break;
+                            case 8: this.Image = Properties.Textures.Win7.win7_8; break;
+
+                            default: throw new ArgumentException("ERROR_TEXTURES_LOAD");
+                        }
+                    }
+                    catch (ArgumentException exeption)
+                    {
+                        MessageBox.Show(exeption.Message);
+                    }
+                    
+                }
             }
+        }
+
+        public static void OpenAllGameField(Form sender)
+        {
+            Sapper.Forms.MainForm senderForm = sender as Sapper.Forms.MainForm;
+
+            if (null != senderForm)
+                foreach (var field in senderForm.GameFieldButtons)
+                    if (false == field._isPressed)
+                        field.PerformClick();
         }
     }
 }
