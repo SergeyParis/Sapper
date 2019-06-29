@@ -61,6 +61,9 @@
     <Compile Include="Controls\UserTimer.Designer.cs">
       <DependentUpon>UserTimer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainFormGameFieldCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\StarterFormAdvancedSettings.cs">
       <SubType>Form</SubType>
     </Compile>
