@@ -10,11 +10,13 @@ namespace Sapper.Forms
         private int _gameFieldWidth;
         private int _gameFieldHeight;
         private int _countOfBombs;
+        private bool _gameLose = false;
 
-        public int GameFieldWidth => _gameFieldWidth;
-        public int GameFieldHeight => _gameFieldHeight;
-        public int CountOfBombs => _countOfBombs;
+        internal int GameFieldWidth => _gameFieldWidth;
+        internal int GameFieldHeight => _gameFieldHeight;
+        internal int CountOfBombs => _countOfBombs;
         internal GameField GameField => _gameField;
+        internal bool ThisGameLose  => _gameLose;
 
         public MainForm()
         {
@@ -50,12 +52,16 @@ namespace Sapper.Forms
 
         public void GameWin()
         {
+            this._gameLose = false;
+
             _timerThisGame.Stop();
             this._resetButton.Image = Properties.Textures.Win7.win7_resetGameWin;
             _gameField.Lock();
         }
         public void GameLose()
         {
+            this._gameLose = true;
+
             _timerThisGame.Stop();
             _gameField.OpenBomb();
         }
@@ -82,7 +88,7 @@ namespace Sapper.Forms
         }
         private void OnClickResetButton(object sender, EventArgs e)
         {
-            
+            this._gameLose = false;
             this.GameFieldRebuild();
 
             this._timerThisGame.Reset();
