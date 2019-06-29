@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TimerPart_100 = new System.Windows.Forms.PictureBox();
             this.TimerPart_10 = new System.Windows.Forms.PictureBox();
             this.TimerPart_1 = new System.Windows.Forms.PictureBox();
+            this.Timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TimerPart_100)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimerPart_10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimerPart_1)).BeginInit();
@@ -60,6 +62,10 @@
             this.TimerPart_1.TabIndex = 2;
             this.TimerPart_1.TabStop = false;
             // 
+            // Timer
+            // 
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+            // 
             // UserTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -81,5 +87,8 @@
         private System.Windows.Forms.PictureBox TimerPart_100;
         private System.Windows.Forms.PictureBox TimerPart_10;
         private System.Windows.Forms.PictureBox TimerPart_1;
+        private System.Windows.Forms.Timer Timer;
+
+
     }
 }
