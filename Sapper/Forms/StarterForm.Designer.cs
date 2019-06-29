@@ -37,6 +37,7 @@
             this.difficultyComboBox = new System.Windows.Forms.ComboBox();
             this.difficultyLbl = new System.Windows.Forms.Label();
             this.goBtn = new System.Windows.Forms.Button();
+            this.advancedSettings = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // countMinesLbl
@@ -118,7 +119,7 @@
             // 
             this.difficultyLbl.AutoSize = true;
             this.difficultyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.difficultyLbl.Location = new System.Drawing.Point(12, 13);
+            this.difficultyLbl.Location = new System.Drawing.Point(15, 13);
             this.difficultyLbl.Name = "difficultyLbl";
             this.difficultyLbl.Size = new System.Drawing.Size(67, 18);
             this.difficultyLbl.TabIndex = 4;
@@ -135,11 +136,24 @@
             this.goBtn.UseVisualStyleBackColor = true;
             this.goBtn.Click += new System.EventHandler(this.goBtn_Click);
             // 
+            // advancedSettings
+            // 
+            this.advancedSettings.AutoSize = true;
+            this.advancedSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.advancedSettings.Location = new System.Drawing.Point(15, 45);
+            this.advancedSettings.Name = "advancedSettings";
+            this.advancedSettings.Size = new System.Drawing.Size(79, 19);
+            this.advancedSettings.TabIndex = 6;
+            this.advancedSettings.Text = "Advanced";
+            this.advancedSettings.UseVisualStyleBackColor = true;
+            this.advancedSettings.CheckedChanged += new System.EventHandler(this.advancedSettings_CheckedChanged);
+            // 
             // StarterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 118);
+            this.Controls.Add(this.advancedSettings);
             this.Controls.Add(this.goBtn);
             this.Controls.Add(this.difficultyLbl);
             this.Controls.Add(this.difficultyComboBox);
@@ -170,5 +184,6 @@
         private System.Windows.Forms.Label difficultyLbl;
         internal System.Windows.Forms.ComboBox difficultyComboBox;
         private System.Windows.Forms.Button goBtn;
+        private System.Windows.Forms.CheckBox advancedSettings;
     }
 }

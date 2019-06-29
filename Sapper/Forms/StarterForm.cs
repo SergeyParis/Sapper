@@ -96,8 +96,18 @@ namespace Sapper.Forms
         private void StarterForm_VisibleChanged(object sender, EventArgs e)
         {
             if (true == this.Visible)
-            {
                 this.goBtn.Enabled = true;
+        }
+
+        private void advancedSettings_CheckedChanged(object sender, EventArgs e)
+        {
+            if (true == this.advancedSettings.Checked)
+            {
+                ShowAdvancedSettings();
+            }
+            else
+            {
+                HideAdvancedSettings();
             }
         }
     }
