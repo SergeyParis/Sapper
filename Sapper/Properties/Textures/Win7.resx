@@ -157,6 +157,9 @@
   <data name="win7_flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_flag.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_hp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_hp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_resetGame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_resetGame.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

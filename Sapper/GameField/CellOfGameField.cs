@@ -175,7 +175,7 @@ namespace Sapper.GameField
             --_senderGameField.CountNoBombsCells;
             ++_senderGameField.GetSenderForm.HpPlayer;
 
-            this.Image = Properties.Textures.Win7.win7_timer_null;
+            this.Image = Properties.Textures.Win7.win7_hp;
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
