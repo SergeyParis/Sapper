@@ -1,4 +1,4 @@
-﻿namespace Sapper
+﻿namespace Sapper.Controls
 {
     partial class Counter
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sapper
+namespace Sapper.Controls
 {
     public abstract partial class Counter : UserControl
     {
