@@ -7,17 +7,14 @@ namespace Sapper
     internal sealed class CellOfGameField : System.Windows.Forms.Button
     {
         private bool _isFlag;
-        private bool _enabled;
         private GameField _senderGameField;
 
+        internal bool EnabledClick;
         internal bool IsPressed;
         internal bool IsBomb;
         internal int CountSurroundingCellsWithBomb;
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
-        
-
-
         
         private bool IsFlag
         {
@@ -76,7 +73,7 @@ namespace Sapper
             if (false == this.IsPressed && false == this.IsFlag)
             {
                 this.IsPressed = true;
-                this._enabled = false;
+                this.EnabledClick = false;
                 
                 try { _senderGameField.NoBombsCells.RemoveAt(_senderGameField.NoBombsCells.IndexOf(this)); }
                 catch { }

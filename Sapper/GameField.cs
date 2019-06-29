@@ -52,11 +52,17 @@ namespace Sapper
 
             SetSenderGameFieldForFields();
         }
-        public void Lock()
+        public void LockEnabled()
         {
             foreach (CellOfGameField field in _gameField)
                 field.Enabled = false;
         }
+        public void Lock()
+        {
+            foreach (CellOfGameField field in _gameField)
+                field.EnabledClick = false;
+        }
+
         public void Unlock()
         {
             foreach (CellOfGameField field in _gameField)
@@ -68,12 +74,12 @@ namespace Sapper
                 if (false == field.IsPressed)
                     field.PerformClick();
         }
-        public void Close()
+        public void Clear()
         {
             foreach (var field in _gameField)
                 field.ClearField();
         }
-
+        
         private void SetSenderGameFieldForFields()
         {
             foreach (var field in _gameField)
@@ -90,11 +96,12 @@ namespace Sapper
             for (int i = 0; i < _senderForm.GameFieldWidth; i++)
                 for (int j = 0; j < _senderForm.GameFieldHeight; j++)
                 {
-                    _gameField[i, j] = new CellOfGameField();
-                    _gameField[i, j].Location =
-                        new System.Drawing.Point(
-                            Sapper.Forms.MainForm.FORM_PADDING_SIDE + (i * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)),
-                            Sapper.Forms.MainForm.FORM_PADDING_UP + (j * (Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)));
+                    _gameField[i, j] = new CellOfGameField
+                    {
+                        Location = new System.Drawing.Point(
+                            Sapper.Forms.MainForm.FORM_PADDING_SIDE + (i*(Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)),
+                            Sapper.Forms.MainForm.FORM_PADDING_UP + (j*(Sapper.Forms.MainForm.FIELD_SIZE_GAME - 2)))
+                    };
 
                     _senderForm.Controls.Add(_gameField[i, j]);
                 }
@@ -114,13 +121,6 @@ namespace Sapper
                     _gameField[tempRandomWidth, tempRandomHeight].IsBomb = true;
                 else
                     --i;
-            }
-        }
-        private void Clear()
-        {
-            foreach (var field in _gameField)
-            {
-                field.ClearField();
             }
         }
         private void SetRefSurroundingCells()
