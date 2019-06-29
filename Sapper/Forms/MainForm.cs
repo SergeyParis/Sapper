@@ -18,8 +18,9 @@ namespace Sapper.Forms
         internal int GetCountOfBombs => _getCountOfBombs;
         internal int GetChanceOfExplosionBombs => _chanceOfExplosionBombs;
         internal GameField GameField => _gameField;
-        internal bool ThisGameStop  => _gameStop;
-        
+        internal bool GetThisGameStop  => _gameStop;
+        internal bool GetTimerEnabled => _timerThisGame.GetEnabled;
+
         public MainForm()
         {
             InitializeComponent();

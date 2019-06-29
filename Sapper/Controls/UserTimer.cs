@@ -6,6 +6,8 @@ namespace Sapper.Controls
     {
         private int _time;
 
+        public bool GetEnabled => Timer.Enabled;
+
         public UserTimer() : base()
         {
             InitializeComponent();
@@ -27,14 +29,13 @@ namespace Sapper.Controls
         {
             Timer.Stop();
         }
-
         public void Reset()
         {
             Timer.Stop();
             _time = -1;
             base.SetValueCounter(_time);
         }
-
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             base.SetValueCounter(_time);

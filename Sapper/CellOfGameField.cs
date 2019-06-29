@@ -71,7 +71,7 @@ namespace Sapper
 
         private void OnClick(object sender, EventArgs e)
         {
-            if (false == _senderGameField.GetSenderForm.ThisGameStop)
+            if (false == _senderGameField.GetSenderForm.GetTimerEnabled)
                 _senderGameField.GetSenderForm.TimerStart();
 
             if (false == this.IsPressed && true == this.EnabledClick && false == this.IsFlag)
@@ -102,7 +102,7 @@ namespace Sapper
             int currentChance = random.Next(100); // maximal chace - 100%
 
             if (currentChance < chanceOfExplosionBomb &&
-                false == _senderGameField.GetSenderForm.ThisGameStop)
+                false == _senderGameField.GetSenderForm.GetThisGameStop)
             {
                 this.Image = Properties.Textures.Win7.win7_bombLose;
                 _senderGameField.GetSenderForm.GameLose();
