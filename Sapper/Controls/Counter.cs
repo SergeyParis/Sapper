@@ -12,9 +12,9 @@ namespace Sapper
 {
     public abstract partial class Counter : UserControl
     {
-        protected int value_1;
-        protected int value_10;
-        protected int value_100;
+        protected int Value1;
+        protected int Value10;
+        protected int Value100;
 
         protected Counter()
         {
@@ -26,18 +26,22 @@ namespace Sapper
                 Properties.Textures.Win7.win7_timer_null;
         }
 
-        public virtual void ValueLessNull()
+        protected virtual void ValueLessNull()
         {
-            value_1 = -1;
-            value_10 = -1;
-            value_100 = -1;
+            Value1 = -1;
+            Value10 = -1;
+            Value100 = -1;
+        }
+        protected virtual void ValueMoreThousand()
+        {
+            MessageBox.Show("ERROR_ARGUMENT_VALUE_EXEPTION");
         }
 
         private void SetValue(int value)
         {
             if (value > 1000)
             {
-                MessageBox.Show("ERROR_ARGUMENT_VALUE_EXEPTION");
+                ValueMoreThousand();
                 return;
             }
             if (value < 0)
@@ -47,9 +51,9 @@ namespace Sapper
                 return;
             }
 
-            value_1 = value % 10;
-            value_10 = (value % 100) / 10;
-            value_100 = value / 100;
+            Value1 = value % 10;
+            Value10 = (value % 100) / 10;
+            Value100 = value / 100;
 
         }
 
@@ -62,18 +66,18 @@ namespace Sapper
         }
         private void OutConterValue()
         {
-            while (10 <= value_1)
+            while (10 <= Value1)
             {
-                value_1 -= 10;
-                value_10++;
+                Value1 -= 10;
+                Value10++;
             }
-            while (10 <= value_10)
+            while (10 <= Value10)
             {
-                value_10 -= 10;
-                value_100++;
+                Value10 -= 10;
+                Value100++;
             }
 
-            switch (value_1)
+            switch (Value1)
             {
                 case -1: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_null; break;
 
@@ -88,7 +92,7 @@ namespace Sapper
                 case 8: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_8; break;
                 case 9: this.ValuePart_1.Image = Properties.Textures.Win7.win7_timer_9; break;
             }
-            switch (value_10)
+            switch (Value10)
             {
                 case -1: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_null; break;
 
@@ -103,7 +107,7 @@ namespace Sapper
                 case 8: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_8; break;
                 case 9: this.ValuePart_10.Image = Properties.Textures.Win7.win7_timer_9; break;
             }
-            switch (value_100)
+            switch (Value100)
             {
                 case -1: this.ValuePart_100.Image = Properties.Textures.Win7.win7_timer_null; break;
 
@@ -122,9 +126,9 @@ namespace Sapper
         }
         private void ClearData()
         {
-            value_1 = 0;
-            value_10 = 0;
-            value_100 = 0;
+            Value1 = 0;
+            Value10 = 0;
+            Value100 = 0;
         }
     }
 }

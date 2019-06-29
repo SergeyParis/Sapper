@@ -20,7 +20,13 @@ namespace Sapper.Controls
 
             this.Timer.Interval = 1000;
         }
-        
+
+        protected override void ValueMoreThousand()
+        {
+            base.ValueMoreThousand();
+            this.Timer.Stop();
+        }
+
         public void Start()
         {
             Timer.Start();

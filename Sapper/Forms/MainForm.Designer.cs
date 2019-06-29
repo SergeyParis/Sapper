@@ -138,7 +138,7 @@
         }
         public void GameFieldRebuild()
         {
-            _gameField.Close();
+            _gameField.Clear();
             _timerThisGame.Reset();
             _countBombsRemains.Reset();
 
