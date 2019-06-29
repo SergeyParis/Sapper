@@ -16,6 +16,8 @@ namespace Sapper.GameField
         internal System.Collections.Generic.List<CellOfGameField> SurroundingCells =
             new System.Collections.Generic.List<CellOfGameField>();
 
+        internal bool IsHp { get; set; } = false;
+
         private bool IsFlag
         {
             get
@@ -57,6 +59,7 @@ namespace Sapper.GameField
             this.IsPressed = false;
             this._isFlag = false;
             this.IsBomb = false;
+            this.IsHp = false;
 
             this.CountSurroundingCellsWithBomb = 0;
 
@@ -82,6 +85,8 @@ namespace Sapper.GameField
                     ClickBomb();
                 else if (0 == this.CountSurroundingCellsWithBomb)
                     ClickNullCell();
+                else if (true == this.IsHp)
+                    ClickHp();
                 else
                     ClickNotNullCell();
             }
@@ -164,6 +169,13 @@ namespace Sapper.GameField
             {
                 MessageBox.Show(exeption.Message);
             }
+        }
+        private void ClickHp()
+        {
+            --_senderGameField.CountNoBombsCells;
+            ++_senderGameField.GetSenderForm.HpPlayer;
+
+            this.Image = Properties.Textures.Win7.win7_timer_null;
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {

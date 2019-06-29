@@ -15,7 +15,6 @@ namespace Sapper.Forms
         private int _countHpCells;
 
         private bool _gameStop = false;
-        private int _hpPlayer;
 
         internal int GameFieldWidth => _gameFieldWidth;
         internal int GameFieldHeight => _gameFieldHeight;
@@ -25,6 +24,7 @@ namespace Sapper.Forms
         internal Sapper.GameField.GameField GameField => _gameField;
         internal bool GetThisGameStop  => _gameStop;
         internal bool GetTimerEnabled => _timerThisGame.GetEnabled;
+        internal int HpPlayer { get; set; }
 
         public MainForm()
         {
@@ -43,7 +43,7 @@ namespace Sapper.Forms
         {
             _chanceOfExplosionBombs = chanceExplosion;
             _countHpCells = countHpCells;
-            _hpPlayer = hpPlayer;
+            HpPlayer = hpPlayer;
         }
 
         public void GetFocus()

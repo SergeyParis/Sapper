@@ -50,6 +50,8 @@ namespace Sapper.GameField
             PlacingBombs();
             SetCountSurroundingCellsWithBomb();
             SetNoBombSells();
+            if (_senderForm.GetCountHpCells > 0)
+                PlacingHpCells();
 
             SetSenderGameFieldForFields();
         }

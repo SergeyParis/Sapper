@@ -49,9 +49,6 @@
     <Compile Include="GameField\CellOfGameField.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameField\CellOfGameFieldHP.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\CountBombsRemains.cs">
       <SubType>UserControl</SubType>
     </Compile>
