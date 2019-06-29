@@ -145,10 +145,49 @@
   <data name="win7_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="win7_bomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_bomb.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="win7_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_close.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="win7_flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\Resources\win7_flag.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_resetGame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_resetGame.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_3.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_6.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_7.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_8.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_9.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win7_timer_null" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Resources\win7_timer_null.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

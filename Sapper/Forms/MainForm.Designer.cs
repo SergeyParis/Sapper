@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Sapper.Forms
 {
     partial class MainForm
@@ -80,16 +81,19 @@ namespace Sapper.Forms
 
         #endregion
 
-        internal const int SIZE_GAME_FIELD = 18;
-        internal const int FORM_PADDING_UP = 80;
-        internal const int FORM_PADDING_DOWN = 50;
-        internal const int FORM_PADDING_SIDE = 25;
+        internal const int  FIELD_SIZE_GAME = 18;
+        internal const int  FORM_PADDING_UP = 80;
+        internal const int  FORM_PADDING_DOWN = 50;
+        internal const int  FORM_PADDING_SIDE = 25;
 
-        internal const int FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
-        internal const int FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
+        private const int   RESET_BUTTON_GAME_SIZE = 25;
+        private const int   RESET_BUTTON_PADDING_HEIGHT = 40;
+
+        internal const int  FORM_PADDING_LAST_FIELD_BUTTON_WIDTH = 67;    // kostuli
+        internal const int  FORM_PADDING_LAST_FIELD_BUTTON_HEIGHT = 87;   // kostuli
 
         internal CellOfGameField[,] GameFieldButtons;
-
+        private System.Windows.Forms.Button resetButton;
         public void GameFieldCreate (int gameFieldWidth, int gameFieldHeight, int countOfBomb)
         {
             GameFieldButtons = new CellOfGameField[gameFieldWidth, gameFieldHeight];
@@ -98,12 +102,25 @@ namespace Sapper.Forms
             Sapper.CellOfGameField.PlacingBombsOnBoard(this);
             Sapper.CellOfGameField.ChangeSizeGameField(this);
             Sapper.CellOfGameField.SetCountSurroundingCellsAll(this);
+
+
+            /* Reset button */
+            resetButton = new System.Windows.Forms.Button();
+            resetButton.Size = new System.Drawing.Size(RESET_BUTTON_GAME_SIZE, RESET_BUTTON_GAME_SIZE);
+            resetButton.Location = new System.Drawing.Point(this.Size.Width / 2 - RESET_BUTTON_GAME_SIZE,
+                                                            RESET_BUTTON_PADDING_HEIGHT);
+            resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resetButton.Image = Properties.Textures.Win7.win7_resetGame;
+            resetButton.Click += new EventHandler(OnClickResetButton);
+
+            this.Controls.Add(resetButton);
         }
         private void GameFieldDelete (int gameFieldWidth, int gameFieldHeight)
         {
             for (int i = 0; i < _gameFieldWidth; i++)
                 for (int j = 0; j < GameFieldHeight; j++)
                     this.Controls.Remove(GameFieldButtons[i, j]);
+            this.Controls.Remove(resetButton);
         }
 
         private System.Windows.Forms.MenuStrip MenuStripMain;

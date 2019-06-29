@@ -45,5 +45,13 @@ namespace Sapper.Forms
             _starterForm.Show();
             this.Hide();
         }
+
+        private void OnClickResetButton(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.GameFieldDelete(_gameFieldWidth, _gameFieldHeight);      
+            this.GameFieldCreate(_gameFieldWidth, _gameFieldHeight, _countOfBombs);
+            this.Show();    
+        }
     }
 }

@@ -153,6 +153,16 @@ namespace Sapper.Properties.Textures {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap win7_bomb {
+            get {
+                object obj = ResourceManager.GetObject("win7_bomb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap win7_close {
             get {
                 object obj = ResourceManager.GetObject("win7_close", resourceCulture);
@@ -166,6 +176,126 @@ namespace Sapper.Properties.Textures {
         internal static System.Drawing.Bitmap win7_flag {
             get {
                 object obj = ResourceManager.GetObject("win7_flag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_resetGame {
+            get {
+                object obj = ResourceManager.GetObject("win7_resetGame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_0 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_1 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_2 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_3 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_4 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_5 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_6 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_7 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_8 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_9 {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_timer_null {
+            get {
+                object obj = ResourceManager.GetObject("win7_timer_null", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
