@@ -63,6 +63,16 @@ namespace Sapper.Properties.Textures {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap win7_0 {
+            get {
+                object obj = ResourceManager.GetObject("win7_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap win7_1 {
             get {
                 object obj = ResourceManager.GetObject("win7_1", resourceCulture);
@@ -136,6 +146,26 @@ namespace Sapper.Properties.Textures {
         internal static System.Drawing.Bitmap win7_8 {
             get {
                 object obj = ResourceManager.GetObject("win7_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_close {
+            get {
+                object obj = ResourceManager.GetObject("win7_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap win7_flag {
+            get {
+                object obj = ResourceManager.GetObject("win7_flag", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -11,8 +11,21 @@ namespace Sapper
         public System.Collections.Generic.List<CellOfGameField> SurroundingCells = new List<CellOfGameField>();
         // private static bool gameStart = false;
         private bool _isPressed;
+        private bool _isFlag;
         public bool IsThisBomb { get; set; }
-        public int SurroundingCellsWithBomb { get; set; }
+        public int CountSurroundingCellsWithBomb { get; set; }
+        private bool IsFlag
+        {
+            get
+            {
+                return _isFlag;
+            }
+            set
+            {
+                if (false == this._isPressed)
+                    this._isFlag = value;
+            }
+        }
 
         public CellOfGameField() : this(false) { }
         public CellOfGameField(bool isThisBomb) : base()
@@ -23,13 +36,16 @@ namespace Sapper
             this._isPressed = false;
 
             if (false == this.IsThisBomb)
-                this.SurroundingCellsWithBomb = 0;
+                this.CountSurroundingCellsWithBomb = 0;
             else
-                this.SurroundingCellsWithBomb = -1;
+                this.CountSurroundingCellsWithBomb = -1;
 
             this.FlatAppearance.BorderSize = 0; // delete border
+            this.Image = Properties.Textures.Win7.win7_close;
             this.Size = new Size(Sapper.Forms.MainForm.SIZE_GAME_FIELD, Sapper.Forms.MainForm.SIZE_GAME_FIELD);
+
             this.Click += new EventHandler(OnClick);
+            this.MouseDown += new MouseEventHandler(OnMouseDown);
         }
 
         public static void SetCountSurroundingCellsAll(Form sender)
@@ -40,21 +56,24 @@ namespace Sapper
                 for (int i = 0; i < senderForm.GameFieldWidth; i++)
                     for (int j = 0; j < senderForm.GameFieldHeight; j++)
                     {
-                        try
-                        {
-                            for (int k = -1; k < 2; k++)
-                                for (int l = -1; l < 2; l++)
-                                {
-                                    if ((0 == k) && (0 == l)) { continue; }
 
+                        for (int k = -1; k < 2; k++)
+                            for (int l = -1; l < 2; l++)
+                            {
+                                if ((0 == k) && (0 == l)) { continue; }
+
+                                try
+                                {
                                     senderForm.GameFieldButtons[i, j].
                                         SurroundingCells.Add(senderForm.GameFieldButtons[i - k, j - l]);
 
                                     if (senderForm.GameFieldButtons[i - k, j - l].IsThisBomb)
-                                        senderForm.GameFieldButtons[i, j].SurroundingCellsWithBomb++;
+                                        senderForm.GameFieldButtons[i, j].CountSurroundingCellsWithBomb++;
                                 }
-                        }
-                        catch { continue; }
+                                catch { continue; }
+                            }
+
+
                     }
         }
         public static void ChangeSizeGameField(Form sender)
@@ -109,17 +128,17 @@ namespace Sapper
         {
             // gameStart = true;
 
-            if (false == this._isPressed)
+            if (false == this._isPressed && false == this.IsFlag)
             {
                 this._isPressed = true;
 
                 if (true == this.IsThisBomb)
                     this.Text = "B";
-                else if (0 == this.SurroundingCellsWithBomb)
+                else if (0 == this.CountSurroundingCellsWithBomb)
                 {
-                    this.Text = "0";
+                    this.Image = Properties.Textures.Win7.win7_0;
 
-                    for (int i = 0; i < SurroundingCells.Count; i++)
+                    for (int i = 0; i < this.SurroundingCells.Count; i++)
                     {
                         if (null == SurroundingCells.ToArray()[i])
                             break;
@@ -130,7 +149,7 @@ namespace Sapper
                 {
                     try
                     {
-                        switch (this.SurroundingCellsWithBomb)
+                        switch (this.CountSurroundingCellsWithBomb)
                         {
                             case 1: this.Image = Properties.Textures.Win7.win7_1; break;
                             case 2: this.Image = Properties.Textures.Win7.win7_2; break;
@@ -148,8 +167,30 @@ namespace Sapper
                     {
                         MessageBox.Show(exeption.Message);
                     }
-                    
+
                 }
+            }
+        }
+
+        void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (MouseButtons.Right == e.Button)
+            {
+                if (false == this._isPressed)
+                {
+                    this.IsFlag = !(this.IsFlag);
+                    if (true == this.IsFlag && false == this._isPressed)
+                        this.Image = Properties.Textures.Win7.win7_flag;
+                    else if (false == this._isPressed)
+                        this.Image = Properties.Textures.Win7.win7_close;
+                }
+                else
+                    for (int i = 0; i < SurroundingCells.Count; i++)
+                    {
+                        if (null == SurroundingCells.ToArray()[i])
+                            break;
+                        SurroundingCells.ToArray()[i].PerformClick();
+                    }
             }
         }
 
