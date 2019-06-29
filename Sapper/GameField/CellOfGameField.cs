@@ -77,9 +77,7 @@ namespace Sapper.GameField
             {
                 this.IsPressed = true;
                 this.EnabledClick = false;
-
-                --_senderGameField.CountNoBombsCells;
-
+                
                 if (true == this.IsBomb)
                     ClickBomb();
                 else if (0 == this.CountSurroundingCellsWithBomb)
@@ -98,7 +96,7 @@ namespace Sapper.GameField
             int chanceOfExplosionBomb = _senderGameField.GetSenderForm.GetChanceOfExplosionBombs;
             Random random = new Random();
 
-            int currentChance = random.Next(100); // maximal chace - 100%
+            int currentChance = random.Next(100); // maximal chance - 100%
 
             if (currentChance < chanceOfExplosionBomb &&
                 false == _senderGameField.GetSenderForm.GetThisGameStop)
@@ -114,6 +112,8 @@ namespace Sapper.GameField
         }
         private void ClickNullCell()
         {
+            --_senderGameField.CountNoBombsCells;
+
             this.Image = Properties.Textures.Win7.win7_0;
 
             for (int i = 0; i < this.SurroundingCells.Count; i++)
@@ -125,6 +125,8 @@ namespace Sapper.GameField
         }
         private void ClickNotNullCell()
         {
+            --_senderGameField.CountNoBombsCells;
+
             try
             {
                 switch (this.CountSurroundingCellsWithBomb)
