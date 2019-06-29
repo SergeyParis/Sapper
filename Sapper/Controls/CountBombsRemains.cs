@@ -21,6 +21,11 @@ namespace Sapper.Controls
             InitializeComponent();
         }
 
+        public override void ValueLessNull()
+        {
+            value_1 = value_10 = value_100 = 0;
+        }
+
         public void SetCountBombs(int bombs)
         {
             this._bombs = bombs;

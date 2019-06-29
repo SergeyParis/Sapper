@@ -20,7 +20,7 @@ namespace Sapper.Controls
 
             this.Timer.Interval = 1000;
         }
-
+        
         public void Start()
         {
             Timer.Start();

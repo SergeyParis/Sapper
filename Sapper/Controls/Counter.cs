@@ -12,9 +12,9 @@ namespace Sapper
 {
     public abstract partial class Counter : UserControl
     {
-        private int value_1;
-        private int value_10;
-        private int value_100;
+        protected int value_1;
+        protected int value_10;
+        protected int value_100;
 
         protected Counter()
         {
@@ -26,6 +26,13 @@ namespace Sapper
                 Properties.Textures.Win7.win7_timer_null;
         }
 
+        public virtual void ValueLessNull()
+        {
+            value_1 = -1;
+            value_10 = -1;
+            value_100 = -1;
+        }
+
         private void SetValue(int value)
         {
             if (value > 1000)
@@ -33,11 +40,9 @@ namespace Sapper
                 MessageBox.Show("ERROR_ARGUMENT_VALUE_EXEPTION");
                 return;
             }
-            if (-1 == value)
+            if (value < 0)
             {
-                value_1 = -1;
-                value_10 = -1;
-                value_100 = -1;
+                ValueLessNull();
 
                 return;
             }
