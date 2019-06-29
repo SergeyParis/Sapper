@@ -66,7 +66,11 @@ namespace Sapper.Forms
         }
         private void ChanceOfExplosionTextBox_LostFocus(object sender, EventArgs e)
         {
-            string text = this._chanceOfExplosionTextBox.Text.Remove(this._chanceOfExplosionTextBox.Text.Length - 1);
+            string text;
+            if ('%' == this._chanceOfExplosionTextBox.Text[this._chanceOfExplosionTextBox.Text.Length - 1])
+                text = this._chanceOfExplosionTextBox.Text.Remove(this._chanceOfExplosionTextBox.Text.Length - 1);
+            else
+                text = this._chanceOfExplosionTextBox.Text;
 
             foreach (char c in text)
                 if (57 < c || c < 48)
@@ -77,7 +81,7 @@ namespace Sapper.Forms
                     return;
                 }
 
-            if (100 < Convert.ToInt32(text) || 1 > Convert.ToInt32(text))
+            if (100 < Convert.ToInt32(text) || 0 > Convert.ToInt32(text))
             {
                 this._chanceOfExplosionTextBox.Text = Convert.ToString(_chanceOfExplosionBombs); ;
                 this._chanceOfExplosionTextBox.AppendText("%");
